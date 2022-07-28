@@ -1,11 +1,13 @@
 .nav {
 	position: fixed;
 	top: 0;
-	left: 0;
+	left: -20%;
 	width: 20%;
 	height: 100vh;
 	padding-top: 4rem;
 	background-color: #4f1271;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-out;
 
 	ul {
 		list-style: none;

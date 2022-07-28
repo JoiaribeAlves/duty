@@ -1,13 +1,11 @@
-import { FaBars } from "react-icons/fa";
+import { ReactNode } from "react";
 
 import styles from "./Styles.module.scss";
 
-export function Header() {
-	return (
-		<header className={styles.header}>
-			<button type="button">
-				<FaBars />
-			</button>
-		</header>
-	);
+interface IHeaderProps {
+	children: ReactNode;
+}
+
+export function Header({ children }: IHeaderProps) {
+	return <header className={styles.header}>{children}</header>;
 }

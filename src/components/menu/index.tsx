@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 
 import styles from "./Styles.module.scss";
 
-export function Menu() {
+interface IMenuPros {
+	customClass: string;
+}
+
+export function Menu(props: IMenuPros) {
 	return (
-		<nav className={styles.nav}>
+		<nav className={`${styles.nav} ${props.customClass}`}>
 			<ul>
 				<li>
 					<Link to="/">
