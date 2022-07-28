@@ -8,20 +8,20 @@
 	display: flex;
 	align-items: center;
 	background-color: #4f1271;
-	border-bottom: 1px solid #bfacc8;
+	border-bottom: 1px solid #dddddd;
 	z-index: 2;
 
 	button {
 		padding: 0.5rem 0.5rem 0.3rem;
 		border: none;
 		background-color: transparent;
-		color: #4daa57;
+		color: #dddddd;
 		font-size: 1.5rem;
 		cursor: pointer;
 		transition-duration: 0.2s;
 
 		&:hover {
-			color: #bfacc8;
+			color: #4daa57;
 		}
 	}
 }
