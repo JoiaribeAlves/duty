@@ -1,0 +1,31 @@
+.nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 20%;
+	height: 100vh;
+	padding-top: 4rem;
+	background-color: #4f1271;
+
+	ul {
+		list-style: none;
+
+		li {
+			a {
+				display: flex;
+				align-items: center;
+				gap: 0.625rem;
+				padding: 1rem;
+				color: #bfacc8;
+				text-decoration: none;
+				border-bottom: 1px solid #bfacc8;
+				transition-duration: 0.2s;
+
+				&:hover {
+					background-color: #4daa57;
+					color: #4f1271;
+				}
+			}
+		}
+	}
+}
