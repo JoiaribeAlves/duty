@@ -1,9 +1,13 @@
 import { Layout } from "../Layout";
 
+import { Spiner } from "../Utils";
+
 export function Main() {
 	return (
-		<Layout >
-			<h1>main</h1>
+		<Layout>
+			<>
+				<Spiner />
+			</>
 		</Layout>
 	);
 }
