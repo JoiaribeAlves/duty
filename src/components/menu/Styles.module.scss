@@ -31,3 +31,10 @@
 		}
 	}
 }
+
+@media (max-width: 768px) {
+	.nav {
+		left: -60%;
+		width: 60%;
+	}
+}

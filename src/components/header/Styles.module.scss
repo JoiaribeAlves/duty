@@ -12,7 +12,7 @@
 	z-index: 2;
 
 	button {
-		padding: 0.5rem 0.5rem 0.3rem;
+		margin-top: 0.312rem;
 		border: none;
 		background-color: transparent;
 		color: #dddddd;
@@ -22,6 +22,16 @@
 
 		&:hover {
 			color: #4daa57;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.header {
+		padding: 0 1rem;
+
+		button {
+			font-size: 1.3rem;
 		}
 	}
 }
