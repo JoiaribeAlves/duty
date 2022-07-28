@@ -1,21 +1,31 @@
-import React from "react";
+import { ReactNode, useState } from "react";
+import { FaBars } from "react-icons/fa";
+
 import { Header } from "./header";
 import { Menu } from "./menu";
 
 interface ILayoutProps {
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
 export function Layout({ children }: ILayoutProps) {
+	const [menu, setMenu] = useState(false);
+
+	function handleMenu() {
+		setMenu(!menu);
+	}
+
 	return (
 		<>
-			<Header />
+			<Header>
+				<button type="button" onClick={handleMenu}>
+					<FaBars />
+				</button>
+			</Header>
 
-			<Menu />
+			<Menu customClass={menu ? "open" : ""} />
 
-			<main className="main">
-				{children}
-			</main>
+			<main>{children}</main>
 		</>
 	);
 }
