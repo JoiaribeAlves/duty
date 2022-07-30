@@ -25,22 +25,29 @@ export function Main() {
 	return (
 		<Layout>
 			<>
-				<h1 className={styles.title}>Farmácia de plantão hoje em Jaru</h1>
+				<h1 className={styles.title}>
+					Drogarias Ultra Popular está de plantão hoje
+				</h1>
 
-				<div className={styles.watch}>
-					{/* <p>Esse plantão acabará em:</p> */}
+				<div className={styles.timer}>
+					<p>Esse plantão acabará em:</p>
 
-					<div className={styles.marks}>
-						<div>{hour < 10 ? `0${hour}` : hour}</div>
+					<ul>
+						<li>
+							<p>{hour < 10 ? `0${hour}` : hour}</p>
+							<small>Hora(s)</small>
+						</li>
 
-						<span>:</span>
+						<li>
+							<p>{minute < 10 ? `0${minute}` : minute}</p>
+							<small>Minuto(s)</small>
+						</li>
 
-						<div>{minute < 10 ? `0${minute}` : minute}</div>
-
-						<span>:</span>
-
-						<div>{second < 10 ? `0${second}` : second}</div>
-					</div>
+						<li>
+							<p>{second < 10 ? `0${second}` : second}</p>
+							<small>Segundo(s)</small>
+						</li>
+					</ul>
 				</div>
 			</>
 		</Layout>

@@ -5,19 +5,62 @@
 
 .title {
 	text-align: center;
-	font-size: 1.8rem;
+	font-size: 1.6rem;
 }
 
-.watch {
+.timer {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	margin-top: 2rem;
 
-	.marks {
-		display: flex;
+	ul {
+		list-style: none;
+		display: inherit;
 		justify-content: center;
-		align-items: center;
 		gap: 1rem;
-		// color: #4daa57;
-		color: #4f1271;
-		font-size: 8rem;
-		font-family: ds-digital;
+
+		li {
+			display: inherit;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			width: 15rem;
+			height: 10rem;
+			background-color: #1f1f1f;
+			color: #4daa57;
+			border-radius: 0.625rem;
+			font-size: 8rem;
+			font-family: ds-digital;
+
+			small {
+				font-size: 1rem;
+				font-family: Montserrat;
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.title {
+		font-size: 1.4rem;
+	}
+
+	.timer {
+		gap: 1.5rem;
+		margin-top: 1.5rem;
+
+		ul {
+			li {
+				width: 15rem;
+				height: 8rem;
+				border-radius: 0.312rem;
+				font-size: 5rem;
+
+				small {
+					font-size: 0.8rem;
+				}
+			}
+		}
 	}
 }
