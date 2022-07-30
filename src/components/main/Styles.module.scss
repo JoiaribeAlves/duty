@@ -1,0 +1,23 @@
+@font-face {
+	font-family: ds-digital;
+	src: url("../../assets/fonts/DS-DIGIT.TTF");
+}
+
+.title {
+	text-align: center;
+	font-size: 1.8rem;
+}
+
+.watch {
+
+	.marks {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		// color: #4daa57;
+		color: #4f1271;
+		font-size: 8rem;
+		font-family: ds-digital;
+	}
+}
