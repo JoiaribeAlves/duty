@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { FaBars } from "react-icons/fa";
+import { FaArrowLeft, FaBars } from "react-icons/fa";
 
 import { Header } from "./header";
 import { Menu } from "./menu";
@@ -19,7 +19,7 @@ export function Layout({ children }: ILayoutProps) {
 		<>
 			<Header>
 				<button type="button" onClick={handleMenu}>
-					<FaBars />
+					{menu ? <FaArrowLeft /> : <FaBars />}
 				</button>
 			</Header>
 
