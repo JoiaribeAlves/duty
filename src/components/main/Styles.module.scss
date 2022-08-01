@@ -16,20 +16,20 @@
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
-	margin-top: 2rem;
+	margin: 2rem 0;
 
 	ul {
 		list-style: none;
-		display: inherit;
-		justify-content: center;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
 		gap: 1rem;
 
 		li {
-			display: inherit;
+			display: flex;
 			justify-content: center;
 			align-items: center;
 			flex-direction: column;
-			width: 15rem;
+			text-align: center;
 			height: 10rem;
 			background-color: #1f1f1f;
 			color: #4daa57;
@@ -45,6 +45,28 @@
 	}
 }
 
+.whatsapp {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 3.125rem;
+	background-color: #48c857;
+	color: #ffffff;
+	border-radius: 0.312rem;
+	font-size: 1.2rem;
+	text-decoration: none;
+	transition-duration: 0.2s;
+
+	&:hover {
+		filter: brightness(0.9);
+	}
+
+	svg {
+		font-size: 2rem;
+		margin-right: 0.625rem;
+	}
+}
+
 @media (max-width: 768px) {
 	.title {
 		font-size: 1.4rem;
@@ -52,12 +74,10 @@
 
 	.timer {
 		gap: 1.5rem;
-		margin-top: 1.5rem;
 
 		ul {
 			li {
-				width: 15rem;
-				height: 8rem;
+				height: 7rem;
 				border-radius: 0.312rem;
 				font-size: 5rem;
 
@@ -65,6 +85,14 @@
 					font-size: 0.8rem;
 				}
 			}
+		}
+	}
+
+	.whatsapp {
+		font-size: 1.1rem;
+
+		svg {
+			font-size: 1.5rem;
 		}
 	}
 }
