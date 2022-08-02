@@ -39,6 +39,7 @@ export function Main() {
 
 	const now = new Date();
 	const currentHours = now.getHours();
+	const currentMinutes = now.getMinutes();
 	const currentMonth = now.getMonth() + 1;
 	let nextDuty = new Timer("2022-08-02T07:00:00");
 
@@ -58,10 +59,10 @@ export function Main() {
 		}, 1000);
 	}
 
-	function textSalutation() {
+	function textSalutation(): void {
 		if (currentHours >= 5 && currentHours < 12) {
 			setSalutation("Olá, bom dia!");
-		} else if(currentHours < 18) {
+		} else if (currentHours < 18) {
 			setSalutation("Olá, boa tarde!");
 		} else {
 			setSalutation("Olá, boa noite!");
@@ -78,8 +79,18 @@ export function Main() {
 				<ToastContainer theme="dark" />
 
 				<h1 className={styles.title}>
-					{/* <span>{data.name}</span> estará de plantão em: */}
-					<span>{data.name}</span> encerrará o plantão em:
+					{currentHours >= 7 &&
+					currentMinutes >= 1 &&
+					currentHours <= 21 &&
+					currentMinutes <= 59 ? (
+						<>
+							<span>{data.name}</span> estará de plantão em:
+						</>
+					) : (
+						<>
+							<span>{data.name}</span> encerrará o plantão em:
+						</>
+					)}
 				</h1>
 
 				<div className={styles.timer}>
