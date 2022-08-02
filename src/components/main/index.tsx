@@ -16,7 +16,7 @@ const data = {
 		number: 1623,
 		district: "Setor 2",
 		complement: "Esquina com Av. Marechal Rondon",
-		maps: "https://goo.gl/maps/CsXBMfisD4NDSjt79",
+		maps: "https://goo.gl/maps/Soz3buK4ByKgtmyj9",
 	},
 };
 
@@ -59,17 +59,25 @@ export function Main() {
 
 				<div className={styles.timer}>
 					<ul>
-						<li>
+						<li title={`${hour < 10 ? `0${hour} Hora` : `${hour} Horas`}`}>
 							<p>{hour < 10 ? `0${hour}` : hour}</p>
 							<small>{hour >= 2 ? "Horas" : "Hora"}</small>
 						</li>
 
-						<li>
+						<li
+							title={`${
+								minute < 10 ? `0${minute} Minuto` : `${minute} Minutos`
+							}`}
+						>
 							<p>{minute < 10 ? `0${minute}` : minute}</p>
 							<small>{minute >= 2 ? "Minutos" : "Minuto"}</small>
 						</li>
 
-						<li>
+						<li
+							title={`${
+								second < 10 ? `0${second} Segundo` : `${second} Segundos`
+							}`}
+						>
 							<p>{second < 10 ? `0${second}` : second}</p>
 							<small>{second >= 2 ? "Segundos" : "Segundo"}</small>
 						</li>
@@ -79,7 +87,7 @@ export function Main() {
 				<div className={styles.address}>
 					<h2>Endereço:</h2>
 					<p>
-						{`${data.address.street}, ${data.address.number}, ${data.address.district}`}
+						{`${data.address.street}, ${data.address.number}, ${data.address.district} - ${data.address.complement}`}
 					</p>
 
 					<div className={styles.maps}>
@@ -88,8 +96,8 @@ export function Main() {
 						<span></span>
 						<span></span>
 						<span></span>
-						<a href={data.address.maps} target="_blank">
-							<FaMapMarkedAlt /> Abrir no google maps
+						<a href={data.address.maps} target="_blank" title="Ver no mapa">
+							<FaMapMarkedAlt /> Ver no mapa
 						</a>
 					</div>
 				</div>
@@ -97,9 +105,10 @@ export function Main() {
 				<a
 					href={`https://api.whatsapp.com/send?phone=${data.telephone}&text=Olá, boa noite`}
 					target="_blank"
-					className={styles.whatsapp}
+					className={styles.chat}
+					title="Charmar no Whatsapp"
 				>
-					<FaWhatsapp /> Charmar no Whatsapp
+					<FaWhatsapp />
 				</a>
 			</>
 		</Layout>

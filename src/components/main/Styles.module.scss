@@ -16,7 +16,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
-	margin: 2rem 0;
+	margin: 2rem 0 4rem;
 
 	ul {
 		list-style: none;
@@ -48,7 +48,6 @@
 .address {
 	border-top: 1px solid #dddddd;
 	padding-top: 2rem;
-	margin-bottom: 2rem;
 
 	.maps {
 		position: relative;
@@ -109,25 +108,23 @@
 	}
 }
 
-.whatsapp {
+.chat {
+	position: fixed;
+	right: 2rem;
+	bottom: 2rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 3.125rem;
+	width: 4.0625rem;
+	height: 4.0625rem;
+	border-radius: 50%;
 	background-color: #48c857;
-	color: #ffffff;
-	border-radius: 0.312rem;
-	font-size: 1.2rem;
-	text-decoration: none;
+	color: #dddddd;
+	font-size: 2.2rem;
 	transition-duration: 0.2s;
 
 	&:hover {
-		filter: brightness(0.9);
-	}
-
-	svg {
-		font-size: 2rem;
-		margin-right: 0.625rem;
+		transform: scale(1.1);
 	}
 }
 
@@ -170,12 +167,11 @@
 		}
 	}
 
-	.whatsapp {
-		height: 2.812rem;
-		font-size: 1.1rem;
-
-		svg {
-			font-size: 1.5rem;
-		}
+	.chat {
+		right: 1rem;
+		bottom: 1rem;
+		width: 3.4375rem;
+		height: 3.4375rem;
+		font-size: 1.8rem;
 	}
 }
