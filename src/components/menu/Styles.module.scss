@@ -5,9 +5,11 @@
 	width: 20%;
 	height: 100vh;
 	padding-top: 4rem;
-	background-color: #4f1271;
+	background-color: #1f1f1f;
+	border-right: 1px solid #333333;
 	transition-duration: 0.2s;
 	transition-timing-function: ease-out;
+	z-index: 2;
 
 	ul {
 		list-style: none;
@@ -20,12 +22,11 @@
 				padding: 1rem;
 				color: #dddddd;
 				text-decoration: none;
-				border-bottom: 1px solid #dddddd;
+				border-bottom: 1px solid #333333;
 				transition-duration: 0.2s;
 
 				&:hover {
 					background-color: #4daa57;
-					color: #4f1271;
 				}
 			}
 		}
