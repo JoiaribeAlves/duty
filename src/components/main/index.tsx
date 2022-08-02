@@ -35,8 +35,10 @@ export function Main() {
 	const [hour, setHour] = useState(0);
 	const [minute, setMinute] = useState(0);
 	const [second, setSecond] = useState(0);
+	const [salutation, setSalutation] = useState("");
 
 	const now = new Date();
+	const currentHours = now.getHours();
 	const currentMonth = now.getMonth() + 1;
 	let nextDuty = new Timer("2022-08-02T07:00:00");
 
@@ -56,8 +58,19 @@ export function Main() {
 		}, 1000);
 	}
 
+	function textSalutation() {
+		if (currentHours >= 5 && currentHours < 12) {
+			setSalutation("Olá, bom dia!");
+		} else if(currentHours < 18) {
+			setSalutation("Olá, boa tarde!");
+		} else {
+			setSalutation("Olá, boa noite!");
+		}
+	}
+
 	useEffect(() => {
 		setTime();
+		textSalutation();
 	}, []);
 	return (
 		<Layout>
@@ -115,7 +128,7 @@ export function Main() {
 				</div>
 
 				<a
-					href={`https://api.whatsapp.com/send?phone=${data.telephone}&text=Olá, boa noite`}
+					href={`https://api.whatsapp.com/send?phone=${data.telephone}&text=${salutation}`}
 					target="_blank"
 					className={styles.chat}
 					title="Charmar no Whatsapp"
