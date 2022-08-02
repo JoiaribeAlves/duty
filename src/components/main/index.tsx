@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
+import { FaMapMarkedAlt, FaWhatsapp } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { Timer } from "./timer";
 import { Layout } from "../Layout";
-import { Spiner } from "../Utils";
 
 import styles from "./Styles.module.scss";
-import { FaMapMarkedAlt, FaWhatsapp } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 const data = {
 	name: "Ultra Popular",
@@ -20,15 +20,25 @@ const data = {
 	},
 };
 
+function getBrowserInfo() {
+	const isChrome = navigator.userAgent.includes("Chrome");
+
+	if (!isChrome) {
+		toast.info(
+			"Para uma melhor experiência utilize o navegador Google Chrome."
+		);
+	}
+}
+getBrowserInfo();
+
 export function Main() {
 	const [hour, setHour] = useState(0);
 	const [minute, setMinute] = useState(0);
 	const [second, setSecond] = useState(0);
-	const [message, setMessage] = useState("");
 
 	const now = new Date();
 	const currentMonth = now.getMonth() + 1;
-	let nextDuty = new Timer("2022-08-02T22:00:00");
+	let nextDuty = new Timer("2022-08-02T07:00:00");
 
 	// if (now.getHours() < 22) {
 	// 	nextDuty = new Timer(`${now.getFullYear()}-${currentMonth < 9 ? "0"+currentMonth : currentMonth}-${now.getDate()}T22:00:00 GMT-0400`);
@@ -52,9 +62,11 @@ export function Main() {
 	return (
 		<Layout>
 			<>
+				<ToastContainer theme="dark" />
+
 				<h1 className={styles.title}>
-					<span>{data.name}</span> estará de plantão em:
-					{/* <span>{data.name}</span> encerrará o plantão em: */}
+					{/* <span>{data.name}</span> estará de plantão em: */}
+					<span>{data.name}</span> encerrará o plantão em:
 				</h1>
 
 				<div className={styles.timer}>
