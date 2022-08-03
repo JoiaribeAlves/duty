@@ -49,61 +49,33 @@
 	border-top: 1px solid #dddddd;
 	padding-top: 2rem;
 
+	h2 {
+		margin-bottom: 1rem;
+		color: #4daa57;
+	}
+
 	.maps {
-		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.625rem;
+		width: 100%;
 		height: 3.125rem;
-		margin-top: 2rem;
+		margin-top: 2.5rem;
+		background-color: #1f1f1f;
+		color: #dddddd;
+		border: 1px solid #333333;
 		border-radius: 0.312rem;
-		overflow: hidden;
+		text-decoration: none;
+		font-size: 1.2rem;
+		transition-duration: 0.2s;
 
-		span {
-			display: block;
-			position: absolute;
-			top: -3.125rem;
-			width: 25%;
-			height: 350%;
-			filter: brightness(0.8);
-			transform: rotateZ(25deg);
+		&:hover {
+			color: #319f4f;
 		}
 
-		span:nth-child(1) {
-			left: -0.5rem;
-			background-color: #de4032;
-		}
-
-		span:nth-child(2) {
-			background-color: #196dd6;
-			left: 25%;
-		}
-
-		span:nth-child(3) {
-			left: 50%;
-			background-color: #edb203;
-		}
-
-		span:nth-child(4) {
-			left: 75%;
-			background-color: #319f4f;
-		}
-
-		a {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			gap: 0.625rem;
-			width: 100%;
-			height: 100%;
-			color: #dddddd;
-			text-decoration: none;
-			font-size: 1.2rem;
-
-			svg {
-				font-size: 2rem;
-			}
+		svg {
+			font-size: 2rem;
 		}
 	}
 }
@@ -152,17 +124,10 @@
 	.address {
 		.maps {
 			height: 2.812rem;
+			font-size: 1.1rem;
 
-			span:nth-child(4) {
-				width: 30%;
-			}
-
-			a {
-				font-size: 1.1rem;
-
-				svg {
-					font-size: 1.5rem;
-				}
+			svg {
+				font-size: 1.5rem;
 			}
 		}
 	}

@@ -9,7 +9,7 @@ import { Layout } from "../Layout";
 import styles from "./Styles.module.scss";
 
 const data = {
-	name: "Ultra Popular",
+	name: "Drogarias Ultra Popular",
 	telephone: "5569993042139",
 	address: {
 		street: "Av. Pe. Adolpho Rohl",
@@ -20,7 +20,7 @@ const data = {
 	},
 };
 
-function getBrowserInfo() {
+function getBrowserInfo(): void {
 	const isChrome = navigator.userAgent.includes("Chrome");
 
 	if (!isChrome) {
@@ -41,7 +41,7 @@ export function Main() {
 	const currentHours = now.getHours();
 	const currentMinutes = now.getMinutes();
 	const currentMonth = now.getMonth() + 1;
-	let nextDuty = new Timer("2022-08-02T07:00:00");
+	let nextDuty = new Timer("2022-08-03T07:00:00");
 
 	// if (now.getHours() < 22) {
 	// 	nextDuty = new Timer(`${now.getFullYear()}-${currentMonth < 9 ? "0"+currentMonth : currentMonth}-${now.getDate()}T22:00:00 GMT-0400`);
@@ -83,13 +83,9 @@ export function Main() {
 					currentMinutes >= 1 &&
 					currentHours <= 21 &&
 					currentMinutes <= 59 ? (
-						<>
-							<span>{data.name}</span> estará de plantão em:
-						</>
+						<>O plantão iniciará em:</>
 					) : (
-						<>
-							<span>{data.name}</span> encerrará o plantão em:
-						</>
+						<>O plantão encerrará em:</>
 					)}
 				</h1>
 
@@ -121,21 +117,21 @@ export function Main() {
 				</div>
 
 				<div className={styles.address}>
-					<h2>Endereço:</h2>
+					<h2>{data.name}</h2>
+
+					<h3>Endereço:</h3>
 					<p>
 						{`${data.address.street}, ${data.address.number}, ${data.address.district} - ${data.address.complement}`}
 					</p>
 
-					<div className={styles.maps}>
-						<span></span>
-						<span></span>
-						<span></span>
-						<span></span>
-						<span></span>
-						<a href={data.address.maps} target="_blank" title="Ver no mapa">
-							<FaMapMarkedAlt /> Ver no mapa
-						</a>
-					</div>
+					<a
+						href={data.address.maps}
+						target="_blank"
+						className={styles.maps}
+						title="Ver no mapa"
+					>
+						<FaMapMarkedAlt /> Ver no mapa
+					</a>
 				</div>
 
 				<a
