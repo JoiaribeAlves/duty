@@ -35,7 +35,6 @@ export function Main() {
 	const [hour, setHour] = useState(0);
 	const [minute, setMinute] = useState(0);
 	const [second, setSecond] = useState(0);
-	const [salutation, setSalutation] = useState("");
 
 	const now = new Date();
 	const currentHours = now.getHours();
@@ -59,20 +58,10 @@ export function Main() {
 		}, 1000);
 	}
 
-	function textSalutation(): void {
-		if (currentHours >= 5 && currentHours < 12) {
-			setSalutation("Olá, bom dia!");
-		} else if (currentHours < 18) {
-			setSalutation("Olá, boa tarde!");
-		} else {
-			setSalutation("Olá, boa noite!");
-		}
-	}
-
 	useEffect(() => {
 		setTime();
-		textSalutation();
 	}, []);
+
 	return (
 		<Layout>
 			<>
@@ -91,14 +80,14 @@ export function Main() {
 
 				<div className={styles.timer}>
 					<ul>
-						<li title={`${hour < 10 ? `0${hour} Hora` : `${hour} Horas`}`}>
+						<li title={`${hour < 10 ? `0${hour} Hora(s)` : `${hour} Hora(s)`}`}>
 							<p>{hour < 10 ? `0${hour}` : hour}</p>
 							<small>{hour >= 2 ? "Horas" : "Hora"}</small>
 						</li>
 
 						<li
 							title={`${
-								minute < 10 ? `0${minute} Minuto` : `${minute} Minutos`
+								minute < 10 ? `0${minute} Minuto(s)` : `${minute} Minuto(s)`
 							}`}
 						>
 							<p>{minute < 10 ? `0${minute}` : minute}</p>
@@ -107,7 +96,7 @@ export function Main() {
 
 						<li
 							title={`${
-								second < 10 ? `0${second} Segundo` : `${second} Segundos`
+								second < 10 ? `0${second} Segundo(s)` : `${second} Segundo(s)`
 							}`}
 						>
 							<p>{second < 10 ? `0${second}` : second}</p>
@@ -135,7 +124,7 @@ export function Main() {
 				</div>
 
 				<a
-					href={`https://api.whatsapp.com/send?phone=${data.telephone}&text=${salutation}`}
+					href={`https://api.whatsapp.com/send?phone=${data.telephone}&text=Olá`}
 					target="_blank"
 					className={styles.chat}
 					title="Charmar no Whatsapp"
