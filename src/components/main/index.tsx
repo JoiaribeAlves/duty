@@ -40,7 +40,7 @@ export function Main() {
 	const currentHours = now.getHours();
 	const currentMinutes = now.getMinutes();
 	const currentMonth = now.getMonth() + 1;
-	let nextDuty = new Timer("2022-08-06T07:00:00");
+	let nextDuty = new Timer("2022-08-07T22:00:00");
 
 	// if (now.getHours() < 22) {
 	// 	nextDuty = new Timer(`${now.getFullYear()}-${currentMonth < 9 ? "0"+currentMonth : currentMonth}-${now.getDate()}T22:00:00 GMT-0400`);
