@@ -9,14 +9,14 @@ import { Layout } from "../Layout";
 import styles from "./Styles.module.scss";
 
 const data = {
-	name: "Drogarias Ultra Popular",
-	telephone: "5569993042139",
+	name: "Farmácia Mais Saúde",
+	telephone: "6935210000",
 	address: {
-		street: "Av. Pe. Adolpho Rohl",
-		number: 1623,
-		district: "Setor 2",
-		complement: "Esquina com Av. Marechal Rondon",
-		maps: "https://goo.gl/maps/Soz3buK4ByKgtmyj9",
+		street: "Av. Florianópolis",
+		number: 1719,
+		district: "Setor 4",
+		complement: "Em frente ao hospital municipal",
+		linkToMaps: "",
 	},
 };
 
@@ -40,7 +40,7 @@ export function Main() {
 	const currentHours = now.getHours();
 	const currentMinutes = now.getMinutes();
 	const currentMonth = now.getMonth() + 1;
-	let nextDuty = new Timer("2022-08-03T07:00:00");
+	let nextDuty = new Timer("2022-08-06T07:00:00");
 
 	// if (now.getHours() < 22) {
 	// 	nextDuty = new Timer(`${now.getFullYear()}-${currentMonth < 9 ? "0"+currentMonth : currentMonth}-${now.getDate()}T22:00:00 GMT-0400`);
@@ -114,7 +114,7 @@ export function Main() {
 					</p>
 
 					<a
-						href={data.address.maps}
+						href={data.address.linkToMaps}
 						target="_blank"
 						className={styles.maps}
 						title="Ver no mapa"
