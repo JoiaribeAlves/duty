@@ -10,13 +10,13 @@ import styles from "./Styles.module.scss";
 
 const data = {
 	name: "Farmácia Mais Saúde",
-	telephone: "6935210000",
+	telephone: "69992525658",
 	address: {
 		street: "Av. Florianópolis",
 		number: 1719,
-		district: "Setor 4",
+		district: "Setor 7",
 		complement: "Em frente ao hospital municipal",
-		linkToMaps: "",
+		linkToMaps: "https://goo.gl/maps/JzDnAJ52RiwbFQxf7",
 	},
 };
 
