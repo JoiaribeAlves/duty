@@ -10,7 +10,7 @@ import styles from "./Styles.module.scss";
 
 const data = {
 	name: "Farmácia Mais Saúde",
-	telephone: "69992525658",
+	telephone: "5569992525658",
 	address: {
 		street: "Av. Florianópolis",
 		number: 1719,
@@ -40,7 +40,7 @@ export function Main() {
 	const currentHours = now.getHours();
 	const currentMinutes = now.getMinutes();
 	const currentMonth = now.getMonth() + 1;
-	let nextDuty = new Timer("2022-08-07T22:00:00");
+	let nextDuty = new Timer("2022-08-08T07:00:00");
 
 	// if (now.getHours() < 22) {
 	// 	nextDuty = new Timer(`${now.getFullYear()}-${currentMonth < 9 ? "0"+currentMonth : currentMonth}-${now.getDate()}T22:00:00 GMT-0400`);
