@@ -3,6 +3,7 @@ import { FaArrowLeft, FaBars } from "react-icons/fa";
 
 import { Header } from "./header";
 import { Menu } from "./menu";
+import { Footer } from "./footer";
 
 interface ILayoutProps {
 	children: ReactNode;
@@ -26,6 +27,8 @@ export function Layout({ children }: ILayoutProps) {
 			<Menu customClass={menu ? "open" : ""} />
 
 			<main>{children}</main>
+
+			<Footer />
 		</>
 	);
 }

@@ -1,0 +1,25 @@
+.footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 3.75rem;
+	font-size: 0.8rem;
+	text-align: center;
+
+	p {
+		span {
+			svg {
+				color: #dc143c;
+			}
+		}
+
+		a {
+			color: #dddddd;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
