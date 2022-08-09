@@ -9,14 +9,14 @@ import { Layout } from "../Layout";
 import styles from "./Styles.module.scss";
 
 const data = {
-	name: "Farmácia Mais Saúde",
-	telephone: "5569992525658",
+	name: "Farmadroga",
+	telephone: "556935212506",
 	address: {
-		street: "Av. Florianópolis",
-		number: 1719,
-		district: "Setor 7",
-		complement: "Em frente ao hospital municipal",
-		linkToMaps: "https://goo.gl/maps/JzDnAJ52RiwbFQxf7",
+		street: "Av. Pe. Adolpho Rohl",
+		number: 1954,
+		district: "Setor 1",
+		complement: "Próximo a loja Avenida",
+		linkToMaps: "https://goo.gl/maps/bat663Kb7eFubQWo7",
 	},
 };
 
@@ -40,7 +40,7 @@ export function Main() {
 	const currentHours = now.getHours();
 	const currentMinutes = now.getMinutes();
 	const currentMonth = now.getMonth() + 1;
-	let nextDuty = new Timer("2022-08-08T07:00:00");
+	let nextDuty = new Timer("2022-08-09T07:00:00");
 
 	// if (now.getHours() < 22) {
 	// 	nextDuty = new Timer(`${now.getFullYear()}-${currentMonth < 9 ? "0"+currentMonth : currentMonth}-${now.getDate()}T22:00:00 GMT-0400`);
