@@ -1,22 +1,21 @@
-import "dotenv/config";
 import axios from "axios";
 
 const app = axios.create({
-	baseURL: process.env.API_BASE_URL,
+	baseURL: import.meta.env.VITE_API_BASE_URL,
 });
 
-export function getFarmacy(id: string) {
+export async function getFarmacy(id: string) {
 	return app.get(`/pharmacy/${id}`);
 }
 
-export function getFarmacies() {
+export async function getFarmacies() {
 	return app.get("/pharmacies");
 }
 
-export function getDuties() {
+export async function getDuties() {
 	return app.get("/duties");
 }
 
-export function getDuty(date: string) {
+export async function getDuty(date: string) {
 	return app.get(`/duty/${date}`);
 }
