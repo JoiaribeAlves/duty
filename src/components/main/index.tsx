@@ -5,18 +5,19 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { Timer } from "./timer";
 import { Layout } from "../Layout";
+import { getDuty } from "../../services/api";
 
 import styles from "./Styles.module.scss";
 
 const data = {
-	name: "Farmadroga",
-	telephone: "556935212506",
+	name: "Farmácia Santa Lúcia",
+	telephone: "69 3521-2520",
 	address: {
-		street: "Av. Pe. Adolpho Rohl",
-		number: 1954,
-		district: "Setor 1",
-		complement: "Próximo a loja Avenida",
-		linkToMaps: "https://goo.gl/maps/bat663Kb7eFubQWo7",
+		street: "Av. Dom Pedro I",
+		number: 2552,
+		district: "Setor 5",
+		complement: "Em frente ao supermercado IG.",
+		linkToMaps: "https://goo.gl/maps/jjYtNZrduWocwNdk9",
 	},
 };
 
@@ -40,7 +41,7 @@ export function Main() {
 	const currentHours = now.getHours();
 	const currentMinutes = now.getMinutes();
 	const currentMonth = now.getMonth() + 1;
-	let nextDuty = new Timer("2022-08-09T07:00:00");
+	let nextDuty = new Timer("2022-08-09T22:00:00");
 
 	// if (now.getHours() < 22) {
 	// 	nextDuty = new Timer(`${now.getFullYear()}-${currentMonth < 9 ? "0"+currentMonth : currentMonth}-${now.getDate()}T22:00:00 GMT-0400`);
@@ -59,7 +60,11 @@ export function Main() {
 	}
 
 	useEffect(() => {
-		setTime();
+		(async () => {
+			setTime();
+
+			//console.log(await getDuty("2022-08-08T22%3a00%3a00"));
+		})();
 	}, []);
 
 	return (
@@ -108,6 +113,10 @@ export function Main() {
 				<div className={styles.address}>
 					<h2>{data.name}</h2>
 
+					<h3>Telefone:</h3>
+					<p>{`${data.telephone}`}</p>
+					<br />
+
 					<h3>Endereço:</h3>
 					<p>
 						{`${data.address.street}, ${data.address.number}, ${data.address.district} - ${data.address.complement}`}
@@ -123,14 +132,14 @@ export function Main() {
 					</a>
 				</div>
 
-				<a
-					href={`https://api.whatsapp.com/send?phone=${data.telephone}&text=Olá`}
+				{/* <a
+					href={`https://api.whatsapp.com/send?phone=${data.telephone}&text=Olá, estou precisando de atendimento`}
 					target="_blank"
 					className={styles.chat}
 					title="Charmar no Whatsapp"
 				>
 					<FaWhatsapp />
-				</a>
+				</a> */}
 			</>
 		</Layout>
 	);
