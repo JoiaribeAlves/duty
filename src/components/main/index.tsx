@@ -5,7 +5,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { Timer } from "./timer";
 import { Layout } from "../Layout";
-import { getDuty } from "../../services/api";
 
 import styles from "./Styles.module.scss";
 
@@ -32,7 +31,7 @@ function getBrowserInfo(): void {
 }
 getBrowserInfo();
 
-export function Main() {
+export function Main(): JSX.Element {
 	const [hour, setHour] = useState(0);
 	const [minute, setMinute] = useState(0);
 	const [second, setSecond] = useState(0);
@@ -41,15 +40,7 @@ export function Main() {
 	const currentHours = now.getHours();
 	const currentMinutes = now.getMinutes();
 	const currentMonth = now.getMonth() + 1;
-	let nextDuty = new Timer("2022-08-09T22:00:00");
-
-	// if (now.getHours() < 22) {
-	// 	nextDuty = new Timer(`${now.getFullYear()}-${currentMonth < 9 ? "0"+currentMonth : currentMonth}-${now.getDate()}T22:00:00 GMT-0400`);
-	// } else {
-	// 	nextDuty = new Timer(`${now.getFullYear()}-${currentMonth < 9 ? "0"+currentMonth : currentMonth}-${now.getDate() + 1}T07:00:00 GMT-0400`);
-	// }
-
-	// console.log(new Timer(`${nextDuty.targetDate}`));
+	let nextDuty = new Timer("2022-08-10T07:00:00");
 
 	function setTime(): void {
 		setInterval(() => {
@@ -60,11 +51,7 @@ export function Main() {
 	}
 
 	useEffect(() => {
-		(async () => {
-			setTime();
-
-			//console.log(await getDuty("2022-08-08T22%3a00%3a00"));
-		})();
+		setTime();
 	}, []);
 
 	return (
