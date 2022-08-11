@@ -9,14 +9,15 @@ import { Layout } from "../Layout";
 import styles from "./Styles.module.scss";
 
 const data = {
-	name: "Farmácia Santa Lúcia",
-	telephone: "69 3521-2520",
+	name: "Drogarias Ultra Popular",
+	telephone: "69 99304-2139",
+	whatsapp: "5569993042139",
 	address: {
-		street: "Av. Dom Pedro I",
-		number: 2552,
-		district: "Setor 5",
-		complement: "Em frente ao supermercado IG.",
-		linkToMaps: "https://goo.gl/maps/jjYtNZrduWocwNdk9",
+		street: "Av. Pe. Adolpho Rohl",
+		number: 1623,
+		district: "Setor 1",
+		complement: "Esquina com Av. Marechal Rondon.",
+		linkToMaps: "https://goo.gl/maps/M4E9pJUbscXhxbg87",
 	},
 };
 
@@ -119,14 +120,14 @@ export function Main(): JSX.Element {
 					</a>
 				</div>
 
-				{/* <a
-					href={`https://api.whatsapp.com/send?phone=${data.telephone}&text=Olá, estou precisando de atendimento`}
+				<a
+					href={`https://api.whatsapp.com/send?phone=${data.whatsapp}&text=Olá, estou precisando de atendimento`}
 					target="_blank"
 					className={styles.chat}
 					title="Charmar no Whatsapp"
 				>
 					<FaWhatsapp />
-				</a> */}
+				</a>
 			</>
 		</Layout>
 	);
