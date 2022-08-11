@@ -120,14 +120,14 @@ export function Main(): JSX.Element {
 					</a>
 				</div>
 
-				<a
+				{/* <a
 					href={`https://api.whatsapp.com/send?phone=${data.whatsapp}&text=Olá, estou precisando de atendimento`}
 					target="_blank"
 					className={styles.chat}
 					title="Charmar no Whatsapp"
 				>
 					<FaWhatsapp />
-				</a>
+				</a> */}
 			</>
 		</Layout>
 	);
