@@ -112,6 +112,8 @@
 	flex-direction: column;
 	gap: 1rem;
 	font-size: 1.2rem;
+	background-color: #141414;
+	z-index: 3;
 
 	button {
 		padding: 0.8rem 1rem;
@@ -162,5 +164,13 @@
 		width: 3.4375rem;
 		height: 3.4375rem;
 		font-size: 1.8rem;
+	}
+
+	.errorLoad {
+		font-size: 1rem;
+
+		button {
+			font-size: 1rem;
+		}
 	}
 }
