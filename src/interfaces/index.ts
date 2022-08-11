@@ -1,16 +1,14 @@
 export interface IFarmacy {
-	_id: string;
+	id?: string;
 	name: string;
 	telephone: string;
+	whatsapp?: string;
 	address: {
 		street: string;
 		number: number;
 		district: string;
-		complement: string;
+		complement?: string;
 		linkToMap: string;
-		zipCode: string;
-		city: string;
-		state: string;
 	};
 }
 
@@ -26,13 +24,15 @@ export interface IDuty {
 	pharmacy: {
 		name: string;
 		telephone: string;
+		whatsapp: string;
 		address: {
 			street: string;
 			number: number;
 			district: string;
 			complement: string;
-		}
-	}
+			linkToMap: string;
+		};
+	};
 }
 
 export interface IDuties {
