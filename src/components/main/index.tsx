@@ -41,7 +41,7 @@ export function Main(): JSX.Element {
 	const currentHours = now.getHours();
 	const currentMinutes = now.getMinutes();
 	const currentMonth = now.getMonth() + 1;
-	let nextDuty = new Timer("2022-08-10T07:00:00");
+	let nextDuty = new Timer("2022-08-10T22:00:00");
 
 	function setTime(): void {
 		setInterval(() => {
