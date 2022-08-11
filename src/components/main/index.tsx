@@ -9,15 +9,15 @@ import { Layout } from "../Layout";
 import styles from "./Styles.module.scss";
 
 const data = {
-	name: "Drogarias Ultra Popular",
-	telephone: "69 99304-2139",
-	whatsapp: "5569993042139",
+	name: "Farmácia Economize",
+	telephone: "69 3521-1460",
+	whatsapp: "",
 	address: {
-		street: "Av. Pe. Adolpho Rohl",
-		number: 1623,
-		district: "Setor 1",
-		complement: "Esquina com Av. Marechal Rondon.",
-		linkToMaps: "https://goo.gl/maps/M4E9pJUbscXhxbg87",
+		street: "Av. Dom Pedro I",
+		number: 2616,
+		district: "Setor 5",
+		complement: "Próximo ao supermercado IG.",
+		linkToMaps: "https://g.page/farmaciaeconomizejaru_ro?share",
 	},
 };
 
@@ -41,7 +41,7 @@ export function Main(): JSX.Element {
 	const currentHours = now.getHours();
 	const currentMinutes = now.getMinutes();
 	const currentMonth = now.getMonth() + 1;
-	let nextDuty = new Timer("2022-08-11T07:00:00");
+	let nextDuty = new Timer("2022-08-11T22:00:00");
 
 	function setTime(): void {
 		setInterval(() => {
