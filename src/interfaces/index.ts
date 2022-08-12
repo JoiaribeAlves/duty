@@ -20,8 +20,8 @@ export interface IFarmacies {
 
 export interface IDuty {
 	duty: {
-		startDate: string;
-		endDate: string;
+		startDate: Date;
+		endDate: Date;
 	};
 	pharmacy: IFarmacy;
 }
