@@ -55,13 +55,13 @@ export function Main(): JSX.Element {
 			loadContent(
 				`${year}-${addZeroIfNecessary(month)}-${addZeroIfNecessary(
 					day
-				)}T02%3a00%3a00`
+				)}T02%3a00%3a00.000Z`
 			);
 		} else {
 			loadContent(
 				`${year}-${addZeroIfNecessary(month)}-${addZeroIfNecessary(
 					day + 1
-				)}T02%3a00%3a00`
+				)}T02%3a00%3a00.000Z`
 			);
 		}
 	}
