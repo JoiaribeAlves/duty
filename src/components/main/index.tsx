@@ -54,14 +54,14 @@ export function Main(): JSX.Element {
 		if (hours >= 0 && hours < 7) {
 			loadContent(
 				`${year}-${addZeroIfNecessary(month)}-${addZeroIfNecessary(
-					day - 1
-				)}T22%3a00%3a00`
+					day
+				)}T02%3a00%3a00`
 			);
 		} else {
 			loadContent(
 				`${year}-${addZeroIfNecessary(month)}-${addZeroIfNecessary(
-					day
-				)}T22%3a00%3a00`
+					day + 1
+				)}T02%3a00%3a00`
 			);
 		}
 	}
