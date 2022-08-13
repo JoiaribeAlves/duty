@@ -1,25 +1,15 @@
 import { useEffect, useState } from "react";
 import { FaMapMarkedAlt, FaWhatsapp } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { format } from "date-fns";
 
-import { Timer } from "./timer";
+import { getDuty } from "../../services/api";
 import { Layout } from "../Layout";
+import { Spiner } from "../Utils";
+
+import { IDuty } from "../../interfaces";
 
 import styles from "./Styles.module.scss";
-
-const data = {
-	name: "Farmácias Preço Baixo",
-	telephone: "69 3521-2222",
-	whatsapp: "5569993679463",
-	address: {
-		street: "Av. Dom Pedro I",
-		number: 2508,
-		district: "Setor 5",
-		complement: "Em frente ao supermercado IG.",
-		linkToMaps: "https://goo.gl/maps/WPGGM3VbG4gbXQ826",
-	},
-};
 
 function getBrowserInfo(): void {
 	const isChrome = navigator.userAgent.includes("Chrome");
@@ -33,102 +23,137 @@ function getBrowserInfo(): void {
 getBrowserInfo();
 
 export function Main(): JSX.Element {
-	const [hour, setHour] = useState(0);
-	const [minute, setMinute] = useState(0);
-	const [second, setSecond] = useState(0);
+	const [pharmacyData, setPharmacyData] = useState<IDuty>();
+	const [loading, setLoading] = useState(true);
+	const [errorLoad, setErrorLoad] = useState(false);
 
-	const now = new Date();
-	const currentHours = now.getHours();
-	const currentMinutes = now.getMinutes();
-	const currentMonth = now.getMonth() + 1;
-	let nextDuty = new Timer("2022-08-13T07:00:00");
+	async function loadContent(date: string): Promise<void> {
+		try {
+			const { data } = await getDuty(date);
 
-	function setTime(): void {
-		setInterval(() => {
-			setHour(nextDuty.total[1]);
-			setMinute(nextDuty.total[2]);
-			setSecond(nextDuty.total[3]);
-		}, 1000);
+			setPharmacyData(data);
+		} catch (error) {
+			setErrorLoad(true);
+		} finally {
+			setLoading(false);
+		}
+	}
+
+	function addZeroIfNecessary(number: number): string {
+		return number < 10 ? `0${number}` : `${number}`;
+	}
+
+	function setDateAndTimeToLoadContent(): void {
+		const now = new Date();
+		const year = now.getFullYear();
+		const month = now.getMonth() + 1;
+		const day = now.getDate();
+		const hours = now.getHours();
+
+		if (hours >= 0 && hours < 7) {
+			loadContent(
+				`${year}-${addZeroIfNecessary(month)}-${addZeroIfNecessary(
+					day - 1
+				)}T22%3a00%3a00`
+			);
+		} else {
+			loadContent(
+				`${year}-${addZeroIfNecessary(month)}-${addZeroIfNecessary(
+					day
+				)}T22%3a00%3a00`
+			);
+		}
 	}
 
 	useEffect(() => {
-		setTime();
+		setDateAndTimeToLoadContent();
 	}, []);
 
 	return (
-		<Layout>
-			<>
-				<ToastContainer theme="dark" />
+		<>
+			{loading ? (
+				<Spiner />
+			) : (
+				<Layout>
+					<ToastContainer theme="dark" />
 
-				<h1 className={styles.title}>
-					{currentHours >= 7 &&
-					currentMinutes >= 1 &&
-					currentHours <= 21 &&
-					currentMinutes <= 59 ? (
-						<>O plantão iniciará em:</>
-					) : (
-						<>O plantão encerrará em:</>
+					<h1 className={styles.title}>
+						Farmácia de plantão em {pharmacyData?.pharmacy.address.city}
+					</h1>
+
+					<div className={styles.timer}>
+						<div className={styles.start}>
+							<p>Início</p>
+							<div>
+								<p>
+									{format(
+										new Date(pharmacyData!.duty.startDate),
+										"dd - MM - yy"
+									)}
+								</p>
+								<p>
+									{format(new Date(pharmacyData!.duty.startDate), "HH") + "h"}
+								</p>
+							</div>
+						</div>
+
+						<div className={styles.end}>
+							<p>Término</p>
+							<div>
+								<p>
+									{format(new Date(pharmacyData!.duty.endDate), "dd - MM - yy")}
+								</p>
+								<p>
+									{format(new Date(pharmacyData!.duty.endDate), "HH") + "h"}
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div className={styles.address}>
+						<h2>{pharmacyData?.pharmacy.name}</h2>
+
+						<h3>Telefone:</h3>
+						<p>{`${pharmacyData?.pharmacy.telephone}`}</p>
+						<br />
+
+						<h3>Endereço:</h3>
+						<p>
+							{`${pharmacyData?.pharmacy.address.street}, ${pharmacyData?.pharmacy.address.number}, ${pharmacyData?.pharmacy.address.district} - ${pharmacyData?.pharmacy.address.complement}`}
+						</p>
+
+						<a
+							href={pharmacyData?.pharmacy.address.linkToMap}
+							target="_blank"
+							className={styles.maps}
+							title="Ver no mapa"
+						>
+							<FaMapMarkedAlt /> Ver no mapa
+						</a>
+					</div>
+
+					{pharmacyData?.pharmacy.whatsapp && (
+						<a
+							href={`https://api.whatsapp.com/send?phone=${pharmacyData?.pharmacy.whatsapp}&text=Olá, estou precisando de atendimento`}
+							target="_blank"
+							className={styles.chat}
+							title="Charmar no Whatsapp"
+						>
+							<FaWhatsapp />
+						</a>
 					)}
-				</h1>
+				</Layout>
+			)}
 
-				<div className={styles.timer}>
-					<ul>
-						<li title={`${hour < 10 ? `0${hour} Hora(s)` : `${hour} Hora(s)`}`}>
-							<p>{hour < 10 ? `0${hour}` : hour}</p>
-							<small>{hour >= 2 ? "Horas" : "Hora"}</small>
-						</li>
+			{errorLoad && (
+				<div className={styles.errorLoad}>
+					<p>Ocorreu um erro ao carregar os dados.</p>
 
-						<li
-							title={`${
-								minute < 10 ? `0${minute} Minuto(s)` : `${minute} Minuto(s)`
-							}`}
-						>
-							<p>{minute < 10 ? `0${minute}` : minute}</p>
-							<small>{minute >= 2 ? "Minutos" : "Minuto"}</small>
-						</li>
-
-						<li
-							title={`${
-								second < 10 ? `0${second} Segundo(s)` : `${second} Segundo(s)`
-							}`}
-						>
-							<p>{second < 10 ? `0${second}` : second}</p>
-							<small>{second >= 2 ? "Segundos" : "Segundo"}</small>
-						</li>
-					</ul>
+					<button type="button" onClick={() => window.location.reload()}>
+						Tentar novamente
+					</button>
 				</div>
-
-				<div className={styles.address}>
-					<h2>{data.name}</h2>
-
-					<h3>Telefone:</h3>
-					<p>{`${data.telephone}`}</p>
-					<br />
-
-					<h3>Endereço:</h3>
-					<p>
-						{`${data.address.street}, ${data.address.number}, ${data.address.district} - ${data.address.complement}`}
-					</p>
-
-					<a
-						href={data.address.linkToMaps}
-						target="_blank"
-						className={styles.maps}
-						title="Ver no mapa"
-					>
-						<FaMapMarkedAlt /> Ver no mapa
-					</a>
-				</div>
-
-				{/* <a
-					href={`https://api.whatsapp.com/send?phone=${data.whatsapp}&text=Olá, estou precisando de atendimento`}
-					target="_blank"
-					className={styles.chat}
-					title="Charmar no Whatsapp"
-				>
-					<FaWhatsapp />
-				</a> */}
-			</>
-		</Layout>
+			)}
+		</>
 	);
 }
