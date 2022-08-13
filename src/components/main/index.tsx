@@ -9,15 +9,15 @@ import { Layout } from "../Layout";
 import styles from "./Styles.module.scss";
 
 const data = {
-	name: "Farmácia Economize",
-	telephone: "69 3521-1460",
-	whatsapp: "",
+	name: "Farmácias Preço Baixo",
+	telephone: "69 3521-2222",
+	whatsapp: "5569993679463",
 	address: {
 		street: "Av. Dom Pedro I",
-		number: 2616,
+		number: 2508,
 		district: "Setor 5",
-		complement: "Próximo ao supermercado IG.",
-		linkToMaps: "https://g.page/farmaciaeconomizejaru_ro?share",
+		complement: "Em frente ao supermercado IG.",
+		linkToMaps: "https://goo.gl/maps/WPGGM3VbG4gbXQ826",
 	},
 };
 
@@ -41,7 +41,7 @@ export function Main(): JSX.Element {
 	const currentHours = now.getHours();
 	const currentMinutes = now.getMinutes();
 	const currentMonth = now.getMonth() + 1;
-	let nextDuty = new Timer("2022-08-12T07:00:00");
+	let nextDuty = new Timer("2022-08-13T07:00:00");
 
 	function setTime(): void {
 		setInterval(() => {
