@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaMapMarkedAlt, FaWhatsapp } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import { format } from "date-fns";
+import "react-toastify/dist/ReactToastify.css";
 
 import { getDuty } from "../../services/api";
 import { Layout } from "../Layout";
