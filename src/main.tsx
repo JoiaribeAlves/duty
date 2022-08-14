@@ -1,12 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 import { MainRoutes } from "./routes";
 
 import "./index.scss";
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-	<React.StrictMode>
-		<MainRoutes />
-	</React.StrictMode>
+	<QueryClientProvider client={queryClient}>
+		<React.StrictMode>
+			<MainRoutes />
+		</React.StrictMode>
+	</QueryClientProvider>
 );
