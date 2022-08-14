@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { IDuties, IDuty, IFarmacies, IFarmacy } from "../interfaces";
+import { IDuties, IDuty, IFarmacy } from "../interfaces";
 
 const app = axios.create({
 	baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -11,11 +11,11 @@ export async function getFarmacy(id: string) {
 }
 
 export async function getFarmacies() {
-	return app.get<IFarmacies>("/pharmacies");
+	return app.get<IFarmacy[]>("/pharmacies");
 }
 
 export async function getDuties() {
-	return app.get<IDuties>("/duties");
+	return app.get<IDuties[]>("/duties");
 }
 
 export async function getDuty(date: string) {
