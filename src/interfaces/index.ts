@@ -14,10 +14,6 @@ export interface IFarmacy {
 	};
 }
 
-export interface IFarmacies {
-	pharmacies: IFarmacy[];
-}
-
 export interface IDuty {
 	duty: {
 		startDate: Date;
@@ -27,5 +23,7 @@ export interface IDuty {
 }
 
 export interface IDuties {
-	duties: IDuty[];
+	id: string;
+	startDate: Date;
+	endDate: Date;
 }
