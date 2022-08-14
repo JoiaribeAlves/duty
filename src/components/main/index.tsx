@@ -24,7 +24,7 @@ function getBrowserInfo(): void {
 getBrowserInfo();
 
 export function Main(): JSX.Element {
-	const [pharmacyData, setPharmacyData] = useState<IDuty>();
+	const [pharmacyData, setPharmacyData] = useState<IDuty>({} as IDuty);
 	const [loading, setLoading] = useState(true);
 	const [errorLoad, setErrorLoad] = useState(false);
 
@@ -75,75 +75,80 @@ export function Main(): JSX.Element {
 			{loading ? (
 				<Spiner />
 			) : (
-				<Layout>
-					<ToastContainer theme="dark" />
+				!errorLoad && (
+					<Layout>
+						<ToastContainer theme="dark" />
 
-					<h1 className={styles.title}>
-						Farmácia de plantão em {pharmacyData?.pharmacy.address.city}
-					</h1>
+						<h1 className={styles.title}>
+							Farmácia de plantão em {pharmacyData?.pharmacy.address.city}
+						</h1>
 
-					<div className={styles.timer}>
-						<div className={styles.start}>
-							<p>Início</p>
-							<div>
-								<p>
-									{format(
-										new Date(pharmacyData!.duty.startDate),
-										"dd - MM - yy"
-									)}
-								</p>
-								<p>
-									{format(new Date(pharmacyData!.duty.startDate), "HH") + "h"}
-								</p>
+						<div className={styles.timer}>
+							<div className={styles.start}>
+								<p>Início</p>
+								<div>
+									<p>
+										{format(
+											new Date(pharmacyData?.duty.startDate),
+											"dd - MM - yy"
+										)}
+									</p>
+									<p>
+										{format(new Date(pharmacyData?.duty.startDate), "HH") + "h"}
+									</p>
+								</div>
+							</div>
+
+							<div className={styles.end}>
+								<p>Término</p>
+								<div>
+									<p>
+										{format(
+											new Date(pharmacyData!.duty.endDate),
+											"dd - MM - yy"
+										)}
+									</p>
+									<p>
+										{format(new Date(pharmacyData!.duty.endDate), "HH") + "h"}
+									</p>
+								</div>
 							</div>
 						</div>
 
-						<div className={styles.end}>
-							<p>Término</p>
-							<div>
-								<p>
-									{format(new Date(pharmacyData!.duty.endDate), "dd - MM - yy")}
-								</p>
-								<p>
-									{format(new Date(pharmacyData!.duty.endDate), "HH") + "h"}
-								</p>
-							</div>
+						<div className={styles.address}>
+							<h2>{pharmacyData?.pharmacy.name}</h2>
+
+							<h3>Telefone:</h3>
+							<p>{`${pharmacyData?.pharmacy.telephone}`}</p>
+							<br />
+
+							<h3>Endereço:</h3>
+							<p>
+								{`${pharmacyData?.pharmacy.address.street}, ${pharmacyData?.pharmacy.address.number}, ${pharmacyData?.pharmacy.address.district} - ${pharmacyData?.pharmacy.address.complement}`}
+							</p>
+
+							<a
+								href={pharmacyData?.pharmacy.address.linkToMap}
+								target="_blank"
+								className={styles.maps}
+								title="Ver no mapa"
+							>
+								<FaMapMarkedAlt /> Ver no mapa
+							</a>
 						</div>
-					</div>
 
-					<div className={styles.address}>
-						<h2>{pharmacyData?.pharmacy.name}</h2>
-
-						<h3>Telefone:</h3>
-						<p>{`${pharmacyData?.pharmacy.telephone}`}</p>
-						<br />
-
-						<h3>Endereço:</h3>
-						<p>
-							{`${pharmacyData?.pharmacy.address.street}, ${pharmacyData?.pharmacy.address.number}, ${pharmacyData?.pharmacy.address.district} - ${pharmacyData?.pharmacy.address.complement}`}
-						</p>
-
-						<a
-							href={pharmacyData?.pharmacy.address.linkToMap}
-							target="_blank"
-							className={styles.maps}
-							title="Ver no mapa"
-						>
-							<FaMapMarkedAlt /> Ver no mapa
-						</a>
-					</div>
-
-					{pharmacyData?.pharmacy.whatsapp && (
-						<a
-							href={`https://api.whatsapp.com/send?phone=${pharmacyData?.pharmacy.whatsapp}&text=Olá, estou precisando de atendimento`}
-							target="_blank"
-							className={styles.chat}
-							title="Charmar no Whatsapp"
-						>
-							<FaWhatsapp />
-						</a>
-					)}
-				</Layout>
+						{pharmacyData?.pharmacy.whatsapp && (
+							<a
+								href={`https://api.whatsapp.com/send?phone=${pharmacyData?.pharmacy.whatsapp}&text=Olá, estou precisando de atendimento`}
+								target="_blank"
+								className={styles.chat}
+								title="Charmar no Whatsapp"
+							>
+								<FaWhatsapp />
+							</a>
+						)}
+					</Layout>
+				)
 			)}
 
 			{errorLoad && (
