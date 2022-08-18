@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig} from "axios";
 
-import { IDuties, IDuty, IFarmacy } from "../interfaces";
+import { IDuties, IDuty, IFarmacy, IUser } from "../interfaces";
 
-const app = axios.create({
+export const app = axios.create({
 	baseURL: import.meta.env.VITE_API_BASE_URL,
 });
 
@@ -21,3 +21,28 @@ export async function getDuties() {
 export async function getDuty(date: string) {
 	return app.get<IDuty>(`/duty/${date}`);
 }
+
+export async function signin(
+	email: string,
+	password: string
+): Promise<IUser | null> {
+	try {
+		const { data } = await app.post<IUser>("/session", { email, password });
+
+		return data;
+	} catch (error) {
+		return null;
+	}
+}
+
+// app.interceptors.request.use((config: AxiosRequestConfig) => {
+// 	const token = localStorage.getItem("@token");
+
+// 	if (config.headers === undefined) {
+// 		config.headers = {};
+// 	}
+
+// 	config.headers.Authorization = `Bearer ${token}`;
+
+// 	return config;
+// });
