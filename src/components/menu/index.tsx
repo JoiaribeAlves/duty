@@ -1,4 +1,4 @@
-import { FaCalendarAlt, FaHome } from "react-icons/fa";
+import { FaCalendarAlt, FaHome, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 import styles from "./Styles.module.scss";
@@ -21,6 +21,13 @@ export function Menu(props: IMenuPros) {
 					<Link to="/plantoes">
 						<FaCalendarAlt />
 						Plantões
+					</Link>
+				</li>
+
+				<li>
+					<Link to="/admin/login">
+						<FaUser />
+						Admin
 					</Link>
 				</li>
 			</ul>
