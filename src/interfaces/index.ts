@@ -27,3 +27,17 @@ export interface IDuties {
 	startDate: Date;
 	endDate: Date;
 }
+
+export interface IUser {
+	user?: string;
+	token?: string;
+}
+
+export interface IContext {
+	loading: boolean;
+	errorMsg: boolean;
+	authenticated: boolean;
+	user: IUser | null;
+	login: (email: string, password: string) => Promise<void>;
+	logout: () => void;
+}

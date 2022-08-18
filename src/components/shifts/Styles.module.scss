@@ -1,0 +1,32 @@
+.title {
+	font-size: 1.6rem;
+	text-align: center;
+}
+
+.shifts {
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+	margin-top: 2rem;
+
+	li {
+		padding: 1rem;
+		background-color: #1f1f1f;
+		border: 1px solid #333333;
+		border-radius: 0.312rem;
+		font-size: 2rem;
+		text-align: center;
+		transition-duration: 0.2s;
+
+		&:hover {
+			transform: scale(1.2, 1.5);
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.title {
+		font-size: 1.4rem;
+	}
+}
