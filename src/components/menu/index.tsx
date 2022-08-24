@@ -1,4 +1,4 @@
-import { FaCalendarAlt, FaHome, FaUser } from "react-icons/fa";
+import { FaCalendarAlt, FaHome, FaUserShield } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 import styles from "./Styles.module.scss";
@@ -26,8 +26,8 @@ export function Menu(props: IMenuPros) {
 
 				<li>
 					<Link to="/admin/login">
-						<FaUser />
-						Admin
+						<FaUserShield />
+						Área Restrita
 					</Link>
 				</li>
 			</ul>
