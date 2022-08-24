@@ -2,6 +2,7 @@ import { FaMapMarkedAlt, FaWhatsapp } from "react-icons/fa";
 import { useQuery } from "react-query";
 import { format } from "date-fns";
 import { ToastContainer, toast } from "react-toastify";
+import Helmet from "react-helmet";
 
 import { getDuty } from "../../services/api";
 import { Layout } from "../Layout";
@@ -60,63 +61,71 @@ export function Main(): JSX.Element {
 	}
 
 	return (
-		<Layout>
-			<ToastContainer theme="dark" />
+		<>
+			<Helmet>
+				<title>Plantão de Farmácia</title>
+			</Helmet>
 
-			<h1 className={styles.title}>
-				Farmácia de plantão em {data?.data.pharmacy.address.city}
-			</h1>
+			<Layout>
+				<ToastContainer theme="dark" />
 
-			<div className={styles.timer}>
-				<div className={styles.start}>
-					<p>Início</p>
-					<div>
-						<p>{format(new Date(data!.data.duty.startDate), "dd - MM - yy")}</p>
-						<p>{format(new Date(data!.data.duty.startDate), "HH") + "h"}</p>
+				<h1 className={styles.title}>
+					Farmácia de plantão em {data?.data.pharmacy.address.city}
+				</h1>
+
+				<div className={styles.timer}>
+					<div className={styles.start}>
+						<p>Início</p>
+						<div>
+							<p>
+								{format(new Date(data!.data.duty.startDate), "dd - MM - yy")}
+							</p>
+							<p>{format(new Date(data!.data.duty.startDate), "HH") + "h"}</p>
+						</div>
+					</div>
+
+					<div className={styles.end}>
+						<p>Término</p>
+						<div>
+							<p>{format(new Date(data!.data.duty.endDate), "dd - MM - yy")}</p>
+							<p>{format(new Date(data!.data.duty.endDate), "HH") + "h"}</p>
+						</div>
 					</div>
 				</div>
 
-				<div className={styles.end}>
-					<p>Término</p>
-					<div>
-						<p>{format(new Date(data!.data.duty.endDate), "dd - MM - yy")}</p>
-						<p>{format(new Date(data!.data.duty.endDate), "HH") + "h"}</p>
-					</div>
+				<div className={styles.address}>
+					<h2>{data?.data.pharmacy.name}</h2>
+
+					<h3>Telefone:</h3>
+					<p>{`${data?.data.pharmacy.telephone}`}</p>
+					<br />
+
+					<h3>Endereço:</h3>
+					<p>
+						{`${data?.data.pharmacy.address.street}, ${data?.data.pharmacy.address.number}, ${data?.data.pharmacy.address.district} - ${data?.data.pharmacy.address.complement}`}
+					</p>
+
+					<a
+						href={data?.data.pharmacy.address.linkToMap}
+						target="_blank"
+						className={styles.maps}
+						title="Ver no mapa"
+					>
+						<FaMapMarkedAlt /> Ver no mapa
+					</a>
 				</div>
-			</div>
 
-			<div className={styles.address}>
-				<h2>{data?.data.pharmacy.name}</h2>
-
-				<h3>Telefone:</h3>
-				<p>{`${data?.data.pharmacy.telephone}`}</p>
-				<br />
-
-				<h3>Endereço:</h3>
-				<p>
-					{`${data?.data.pharmacy.address.street}, ${data?.data.pharmacy.address.number}, ${data?.data.pharmacy.address.district} - ${data?.data.pharmacy.address.complement}`}
-				</p>
-
-				<a
-					href={data?.data.pharmacy.address.linkToMap}
-					target="_blank"
-					className={styles.maps}
-					title="Ver no mapa"
-				>
-					<FaMapMarkedAlt /> Ver no mapa
-				</a>
-			</div>
-
-			{data?.data.pharmacy.whatsapp && (
-				<a
-					href={`https://api.whatsapp.com/send?phone=${data?.data.pharmacy.whatsapp}&text=Olá, estou precisando de atendimento`}
-					target="_blank"
-					className={styles.chat}
-					title="Charmar no Whatsapp"
-				>
-					<FaWhatsapp />
-				</a>
-			)}
-		</Layout>
+				{data?.data.pharmacy.whatsapp && (
+					<a
+						href={`https://api.whatsapp.com/send?phone=${data?.data.pharmacy.whatsapp}&text=Olá, estou precisando de atendimento`}
+						target="_blank"
+						className={styles.chat}
+						title="Charmar no Whatsapp"
+					>
+						<FaWhatsapp />
+					</a>
+				)}
+			</Layout>
+		</>
 	);
 }
