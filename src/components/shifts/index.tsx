@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import format from "date-fns/format";
+import { Helmet } from "react-helmet";
 
 import { Layout } from "../Layout";
 import { ErrorLoadData, Spiner } from "../Utils";
@@ -39,20 +40,26 @@ export function Shifts() {
 	const currentMonth = months[currentMonthIndex];
 
 	return (
-		<Layout>
-			<h1 className={styles.title}>
-				Lista de plantões para o mês de {currentMonth}
-			</h1>
+		<>
+			<Helmet>
+				<title>Escala de Plantões</title>
 
-			<ul className={styles.shifts}>
-				{data?.data.map((shift) => (
-					<li key={shift.id}>
-						<p>
-							{format(new Date(shift.startDate), "dd/MM")}
-						</p>
-					</li>
-				))}
-			</ul>
-		</Layout>
+				<meta name="description" content="Escala de plantões de farmácia durante o mês corrente." />
+			</Helmet>
+
+			<Layout>
+				<h1 className={styles.title}>
+					Lista de plantões para o mês de {currentMonth}
+				</h1>
+
+				<ul className={styles.shifts}>
+					{data?.data.map((shift) => (
+						<li key={shift.id}>
+							<p>{format(new Date(shift.startDate), "dd/MM")}</p>
+						</li>
+					))}
+				</ul>
+			</Layout>
+		</>
 	);
 }
