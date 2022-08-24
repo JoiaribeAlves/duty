@@ -52,10 +52,10 @@
 		button {
 			border: none;
 			cursor: pointer;
-		}
 
-		button:hover {
-			filter: brightness(0.9);
+			&:hover {
+				filter: brightness(0.9);
+			}
 		}
 	}
 }
@@ -69,7 +69,6 @@
 		.fieldGroup {
 			input,
 			button {
-				padding: 0.6rem;
 				font-size: 1rem;
 			}
 		}
