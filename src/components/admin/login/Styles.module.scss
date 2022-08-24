@@ -7,7 +7,7 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 98%;
+	width: 90%;
 	max-width: 350px;
 
 	.avatar {
@@ -64,13 +64,6 @@
 	.form {
 		.avatar {
 			font-size: 5rem;
-		}
-
-		.fieldGroup {
-			input,
-			button {
-				font-size: 1rem;
-			}
 		}
 	}
 }

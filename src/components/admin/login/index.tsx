@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { FaUserCircle } from "react-icons/fa";
 
-import { AuthContext } from "../../contexts/auth";
+import { AuthContext } from "../../../contexts/auth";
 
 import styles from "./Styles.module.scss";
 
