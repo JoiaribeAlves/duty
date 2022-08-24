@@ -1,4 +1,6 @@
 import { FormEvent, useContext, useState } from "react";
+import { Navigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { FaUserCircle } from "react-icons/fa";
 
 import { AuthContext } from "../../contexts/auth";
@@ -6,9 +8,13 @@ import { AuthContext } from "../../contexts/auth";
 import styles from "./Styles.module.scss";
 
 export function Login() {
-	const { loading, login, errorMsg } = useContext(AuthContext);
+	const { loading, login, errorMsg, authenticated } = useContext(AuthContext);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
+	if (authenticated) {
+		return <Navigate to="/admin" />
+	}
 
 	async function handleLogin(ev: FormEvent): Promise<void> {
 		ev.preventDefault();
@@ -18,6 +24,13 @@ export function Login() {
 
 	return (
 		<>
+			<Helmet>
+				<title>Fazer login</title>
+
+				<meta name="robots" content="noindex,nofollow" />
+				<meta name="description" content="Página de login." />
+			</Helmet>
+
 			<form className={styles.form} onSubmit={handleLogin}>
 				<div className={styles.avatar}>
 					<FaUserCircle />
