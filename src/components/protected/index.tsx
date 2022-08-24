@@ -1,8 +1,11 @@
 import { useContext } from "react";
+import { Helmet } from "react-helmet";
 import { Navigate } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/auth";
 import { Spiner } from "../Utils";
+
+import styles from "./styles.module.scss";
 
 export function Protected({ children }: { children: JSX.Element }) {
 	const { loading, authenticated, logout } = useContext(AuthContext);
@@ -17,8 +20,14 @@ export function Protected({ children }: { children: JSX.Element }) {
 
 	return (
 		<>
-			<button onClick={() => logout()}>Sair</button>
-			<hr />
+			<Helmet>
+				<meta name="robots" content="noindex,nofollow" />
+			</Helmet>
+
+			<header className={styles.headerProtected}>
+				<button onClick={() => logout()}>Sair</button>
+			</header>
+
 			{children}
 		</>
 	);
