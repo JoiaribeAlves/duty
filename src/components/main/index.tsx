@@ -39,7 +39,7 @@ export function Main(): JSX.Element {
 			)}T02%3a00%3a00.000Z`;
 		} else {
 			return `${year}-${addZeroIfNecessary(month)}-${addZeroIfNecessary(
-				day + 1
+				day < 31 ? day + 1 : day
 			)}T02%3a00%3a00.000Z`;
 		}
 	}
