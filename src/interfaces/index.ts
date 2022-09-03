@@ -1,4 +1,4 @@
-export interface IFarmacy {
+export interface IPharmacy {
 	id: string;
 	name: string;
 	telephone: string;
@@ -19,7 +19,7 @@ export interface IDuty {
 		startDate: Date;
 		endDate: Date;
 	};
-	pharmacy: IFarmacy;
+	pharmacy: IPharmacy;
 }
 
 export interface IDuties {
