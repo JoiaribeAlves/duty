@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
 		if (recoveredUser && token) {
 			setUser(JSON.parse(recoveredUser));
-			app.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+			app.defaults.headers.common["Authorization"] = "Bearer " + token;
 		}
 
 		setLoading(false);
@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
 			app.defaults.headers.common[
 				"Authorization"
-			] = `Bearer ${loggedUser.token}`;
+			] = "Bearer " + loggedUser.token;
 
 			navigate("/admin");
 		} else {
