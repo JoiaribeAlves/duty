@@ -1,17 +1,21 @@
 import axios, { AxiosRequestConfig} from "axios";
 
-import { IDuties, IDuty, IFarmacy, IUser } from "../interfaces";
+import { IDuties, IDuty, IPharmacy, IUser } from "../interfaces";
 
 export const app = axios.create({
 	baseURL: import.meta.env.VITE_API_BASE_URL,
 });
 
-export async function getFarmacy(id: string) {
-	return app.get<IFarmacy>(`/pharmacy/${id}`);
+export async function getPharmacy(id: string) {
+	return app.get<IPharmacy>(`/pharmacy/${id}`);
 }
 
-export async function getFarmacies() {
-	return app.get<IFarmacy[]>("/pharmacies");
+export async function getPharmacies() {
+	return app.get<IPharmacy[]>("/pharmacies");
+}
+
+export async function deletePharmacy(id: string) {
+	return app.delete(`/delete/pharmacy/${id}`);
 }
 
 export async function getDuties() {
