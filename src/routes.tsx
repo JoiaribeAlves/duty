@@ -5,6 +5,8 @@ import { Main } from "./components/main";
 import { Shifts } from "./components/shifts";
 import { Login } from "./components/admin/login";
 import { Protected } from "./components/protected";
+import { Dashboard } from "./components/admin/dashboard";
+import { PharmaciesAdm } from "./components/admin/pharmacies";
 import { NotFound } from "./components/not-found";
 
 export function MainRoutes() {
@@ -20,7 +22,16 @@ export function MainRoutes() {
 						path="/admin"
 						element={
 							<Protected>
-								<h1>protegido</h1>
+								<Dashboard />
+							</Protected>
+						}
+					/>
+
+					<Route
+						path="/admin/farmacias"
+						element={
+							<Protected>
+								<PharmaciesAdm />
 							</Protected>
 						}
 					/>
