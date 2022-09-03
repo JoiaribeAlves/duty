@@ -26,7 +26,7 @@ export function Layout({ children }: ILayoutProps) {
 
 			<Menu customClass={menu ? "open" : ""} />
 
-			<main>{children}</main>
+			<main className="main">{children}</main>
 
 			<Footer />
 		</>
