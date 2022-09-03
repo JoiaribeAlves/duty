@@ -13,7 +13,8 @@
 		transition-duration: 0.2s;
 
 		&:hover {
-			filter: brightness(0.9);
+			border-color: #4daa57;
+			background-color: #4daa57;
 		}
 
 		svg {
@@ -58,7 +59,7 @@
 					transition-duration: 0.2s;
 
 					&:hover {
-						color: #4daa57;
+						color: #4169e1;
 					}
 				}
 
