@@ -18,17 +18,5 @@ export function Protected({ children }: { children: JSX.Element }) {
 		return <Navigate to="/admin/login" replace={true} />;
 	}
 
-	return (
-		<>
-			<Helmet>
-				<meta name="robots" content="noindex,nofollow" />
-			</Helmet>
-
-			<header className={styles.headerProtected}>
-				<button onClick={() => logout()}>Sair</button>
-			</header>
-
-			{children}
-		</>
-	);
+	return <>{children}</>;
 }
