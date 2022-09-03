@@ -1,6 +1,6 @@
 import { LayoutAdm } from "../Layout";
 
-export function Dashboard() {
+export function DashboardAdm() {
 	return (
 		<LayoutAdm>
 			<h1>Dashboard</h1>
