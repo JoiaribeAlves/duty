@@ -15,7 +15,7 @@ body {
 		left: 0;
 	}
 
-	main {
+	.main {
 		padding: 6rem 20%;
 	}
 
@@ -75,7 +75,7 @@ body {
 
 @media (max-width: 768px) {
 	body {
-		main {
+		.main {
 			padding: 6rem 1rem;
 		}
 
