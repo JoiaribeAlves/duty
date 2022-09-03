@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { FaEdit, FaPlus, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -39,6 +39,12 @@ export function PharmaciesAdm() {
 		<LayoutAdm>
 			<>
 				<ToastContainer theme="dark" />
+
+				<p className={styles.new}>
+					<Link to="/admin/farmacia/nova">
+						<FaPlus /> Nova farmácia
+					</Link>
+				</p>
 
 				<table className={styles.table}>
 					<thead>

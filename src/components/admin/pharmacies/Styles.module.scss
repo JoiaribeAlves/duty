@@ -1,3 +1,28 @@
+.new {
+	text-align: right;
+	margin-bottom: 2rem;
+
+	a {
+		display: inline-block;
+		padding: 0.8rem 1rem;
+		background-color: #1f1f1f;
+		color: #dddddd;
+		border: 1px solid #333333;
+		border-radius: 0.312rem;
+		text-decoration: none;
+		transition-duration: 0.2s;
+
+		&:hover {
+			filter: brightness(0.9);
+		}
+
+		svg {
+			font-size: 1rem;
+			padding-top: 3px;
+		}
+	}
+}
+
 .table {
 	width: 100%;
 	border-collapse: collapse;
