@@ -14,14 +14,14 @@ import styles from "../Styles.module.scss";
 interface IFormInputs {
 	name: string;
 	telephone: string;
-	whatsapp?: string;
+	whatsapp: string;
 	street: string;
 	number: number;
 	district: string;
 	complement: string;
 	linkToMap: string;
-	city?: string;
-	state?: string;
+	city: string;
+	state: string;
 }
 
 const schema = yup

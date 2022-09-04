@@ -1,5 +1,5 @@
 export interface IPharmacy {
-	id: string;
+	id?: string;
 	name: string;
 	telephone: string;
 	whatsapp: string;
