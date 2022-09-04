@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { FaSave } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -231,7 +232,10 @@ export function NewPharmacyAdm() {
 						</div>
 					</div>
 
-					<button type="submit">Cadastrar</button>
+					<button type="submit">
+						<FaSave />
+						Cadastrar
+					</button>
 				</form>
 			</>
 		</LayoutAdm>
