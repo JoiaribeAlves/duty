@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
 		if (recoveredUser && token) {
 			setUser(JSON.parse(recoveredUser));
-			app.defaults.headers.common["Authorization"] = "Bearer " + token;
+			app.defaults.headers.common["Authorization"] = "Bearer " + token.slice(1, token.length - 1);
 		}
 
 		setLoading(false);

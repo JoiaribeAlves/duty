@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig} from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 import { IDuties, IDuty, IPharmacy, IUser } from "../interfaces";
 
@@ -12,6 +12,23 @@ export async function getPharmacy(id: string) {
 
 export async function getPharmacies() {
 	return app.get<IPharmacy[]>("/pharmacies");
+}
+
+export async function createPharmacy(data: IPharmacy) {
+	return app.post("/register/pharmacy", {
+		name: data.name,
+		telephone: data.telephone,
+		whatsapp: data.whatsapp,
+		address: {
+			street: data.address.street,
+			number: data.address.number,
+			district: data.address.district,
+			complement: data.address.complement,
+			linkToMap: data.address.linkToMap,
+			city: data.address.city,
+			state: data.address.state,
+		},
+	});
 }
 
 export async function deletePharmacy(id: string) {

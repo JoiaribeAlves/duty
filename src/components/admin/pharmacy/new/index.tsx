@@ -1,9 +1,13 @@
+import axios from "axios";
 import { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { toast, ToastContainer } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { LayoutAdm } from "../../Layout";
+import { createPharmacy } from "../../../../services/api";
+import { IPharmacy } from "../../../../interfaces";
 
 import styles from "../Styles.module.scss";
 
@@ -35,6 +39,7 @@ const schema = yup
 			.string()
 			.min(13, "Telefone inválido.")
 			.max(13, "Telefone inválido."),
+
 		street: yup
 			.string()
 			.required("O nome da Avenida/Rua é obrigatório.")
@@ -64,7 +69,7 @@ const schema = yup
 			.string()
 			.required("O Estado é obrigatório.")
 			.min(2, "O Estado deve ter 2 caracteres.")
-			.max(2, "O Estado deve ter 2 caracteres.")
+			.max(2, "O Estado deve ter 2 caracteres."),
 	})
 	.required();
 
@@ -74,7 +79,6 @@ export function NewPharmacyAdm() {
 		reset,
 		setFocus,
 		handleSubmit,
-		formState,
 		formState: { errors },
 	} = useForm<IFormInputs>({
 		resolver: yupResolver(schema),
@@ -82,14 +86,29 @@ export function NewPharmacyAdm() {
 			number: 0,
 			city: "Jaru",
 			state: "RO",
-		}
+		},
 	});
 
-	const onSubmit: SubmitHandler<IFormInputs> = (data) => console.log(data);
+	const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
+		const dataFormated: IPharmacy = {
+			name: data.name,
+			telephone: data.telephone,
+			whatsapp: data.whatsapp,
+			address: {
+				street: data.street,
+				number: data.number,
+				district: data.district,
+				complement: data.complement,
+				linkToMap: data.linkToMap,
+				city: data.city,
+				state: data.state,
+			},
+		};
 
-	useEffect(() => {
-		if (formState.isSubmitSuccessful) {
-			setFocus("name");
+		try {
+			await createPharmacy(dataFormated);
+
+			toast.success("Farmácia criada com sucesso.");
 
 			reset({
 				name: "",
@@ -101,8 +120,20 @@ export function NewPharmacyAdm() {
 				complement: "",
 				linkToMap: "",
 			});
+		} catch (error) {
+			if (axios.isAxiosError(error)) {
+				if (error.response?.status === 422) {
+					return toast.warning(
+						"Esta Farmácia já existe. Verifique os dados e tente novamente."
+					);
+				} else {
+					return toast.error(
+						"Falha ao criar a Farmácia. Erro interno no servidor."
+					);
+				}
+			}
 		}
-	}, [formState, reset]);
+	};
 
 	useEffect(() => {
 		setFocus("name");
@@ -111,12 +142,18 @@ export function NewPharmacyAdm() {
 	return (
 		<LayoutAdm>
 			<>
+				<ToastContainer theme="dark" />
+
 				<h2>Nova Farmácia</h2>
 
 				<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
 					<div className={styles.inputs}>
 						<div className={styles.input}>
-							<input placeholder="Nome da Farmácia" {...register("name")} />
+							<input
+								type="text"
+								placeholder="Nome da Farmácia"
+								{...register("name")}
+							/>
 							<small>{errors.name?.message}</small>
 						</div>
 
@@ -142,10 +179,7 @@ export function NewPharmacyAdm() {
 							<input
 								type="text"
 								placeholder="Nome da Avenida/Rua"
-								{...register("street", {
-									required: true,
-									maxLength: 255,
-								})}
+								{...register("street")}
 							/>
 							<small>{errors.street?.message}</small>
 						</div>
@@ -187,20 +221,12 @@ export function NewPharmacyAdm() {
 						</div>
 
 						<div className={styles.input}>
-							<input
-								type="text"
-								placeholder="Cidade"
-								{...register("city")}
-							/>
+							<input type="text" placeholder="Cidade" {...register("city")} />
 							<small>{errors.city?.message}</small>
 						</div>
 
 						<div className={styles.input}>
-							<input
-								type="text"
-								placeholder="Estado"
-								{...register("state")}
-							/>
+							<input type="text" placeholder="Estado" {...register("state")} />
 							<small>{errors.state?.message}</small>
 						</div>
 					</div>
