@@ -9,6 +9,7 @@ import { DashboardAdm } from "./components/admin/dashboard";
 import { PharmaciesAdm } from "./components/admin/pharmacies";
 import { NewPharmacyAdm } from "./components/admin/pharmacy/new";
 import { EditPharmacyAdm } from "./components/admin/pharmacy/edit";
+import { ShiftsAdm } from "./components/admin/shifts";
 import { NotFound } from "./components/not-found";
 
 export function MainRoutes() {
@@ -52,6 +53,15 @@ export function MainRoutes() {
 						element={
 							<Protected>
 								<EditPharmacyAdm />
+							</Protected>
+						}
+					/>
+
+					<Route
+						path="/admin/plantoes"
+						element={
+							<Protected>
+								<ShiftsAdm />
 							</Protected>
 						}
 					/>
