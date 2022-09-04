@@ -1,14 +1,11 @@
 import { useContext } from "react";
-import { Helmet } from "react-helmet";
 import { Navigate } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/auth";
 import { Spiner } from "../Utils";
 
-import styles from "./styles.module.scss";
-
 export function Protected({ children }: { children: JSX.Element }) {
-	const { loading, authenticated, logout } = useContext(AuthContext);
+	const { loading, authenticated } = useContext(AuthContext);
 
 	if (loading) {
 		return <Spiner />;
