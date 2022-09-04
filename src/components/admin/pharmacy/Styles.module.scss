@@ -36,6 +36,10 @@
 	}
 
 	button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.312rem;
 		padding: 0.8rem;
 		background-color: #1f1f1f;
 		color: #dddddd;
@@ -48,6 +52,21 @@
 		&:hover {
 			background-color: #4daa57;
 		}
+	}
+}
+
+.btnRefreshWindow {
+	padding: 0.8rem 1rem;
+	background-color: #1f1f1f;
+	color: #dddddd;
+	border: 1px solid #333333;
+	border-radius: 0.312rem;
+	font-size: 1.1rem;
+	cursor: pointer;
+	transition-duration: 0.2s;
+
+	&:hover {
+		background-color: #4daa57;
 	}
 }
 
@@ -66,5 +85,9 @@
 		button {
 			font-size: 1rem;
 		}
+	}
+
+	.btnRefreshWindow {
+		font-size: 1rem;
 	}
 }

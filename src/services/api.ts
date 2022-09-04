@@ -31,6 +31,23 @@ export async function createPharmacy(data: IPharmacy) {
 	});
 }
 
+export async function updatePharmacy(id: string, data: IPharmacy) {
+	return app.patch(`/update/pharmacy/${id}`, {
+		name: data.name,
+		telephone: data.telephone,
+		whatsapp: data.whatsapp,
+		address: {
+			street: data.address.street,
+			number: data.address.number,
+			district: data.address.district,
+			complement: data.address.complement,
+			linkToMap: data.address.linkToMap,
+			city: data.address.city,
+			state: data.address.state,
+		},
+	});
+}
+
 export async function deletePharmacy(id: string) {
 	return app.delete(`/delete/pharmacy/${id}`);
 }

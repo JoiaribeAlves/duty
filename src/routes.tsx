@@ -8,6 +8,7 @@ import { Protected } from "./components/protected";
 import { DashboardAdm } from "./components/admin/dashboard";
 import { PharmaciesAdm } from "./components/admin/pharmacies";
 import { NewPharmacyAdm } from "./components/admin/pharmacy/new";
+import { EditPharmacyAdm } from "./components/admin/pharmacy/edit";
 import { NotFound } from "./components/not-found";
 
 export function MainRoutes() {
@@ -42,6 +43,15 @@ export function MainRoutes() {
 						element={
 							<Protected>
 								<NewPharmacyAdm />
+							</Protected>
+						}
+					/>
+
+					<Route
+						path="/admin/farmacia/editar/:pharmacyId"
+						element={
+							<Protected>
+								<EditPharmacyAdm />
 							</Protected>
 						}
 					/>
