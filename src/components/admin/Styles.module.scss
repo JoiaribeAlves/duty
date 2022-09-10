@@ -84,4 +84,61 @@
 			}
 		}
 	}
+
+	.table {
+		width: 100%;
+		border-collapse: collapse;
+
+		.textCenter {
+			text-align: center;
+		}
+
+		thead {
+			background-color: #1f1f1f;
+
+			th {
+				padding: 0.8rem;
+			}
+		}
+
+		tbody {
+			tr {
+				background-color: transparent;
+				transition-duration: 0.2s;
+
+				&:hover {
+					background-color: rgba(255, 255, 255, 0.1);
+				}
+
+				td {
+					padding: 0.5rem;
+					border-bottom: 1px solid #333333;
+
+					a {
+						padding: 0.3rem;
+						color: #dddddd;
+						transition-duration: 0.2s;
+
+						&:hover {
+							color: #4169e1;
+						}
+					}
+
+					button {
+						padding: 0.3rem;
+						background-color: transparent;
+						color: #dddddd;
+						border: none;
+						font-size: 0.9rem;
+						cursor: pointer;
+						transition-duration: 0.2s;
+
+						&:hover {
+							color: #dc143c;
+						}
+					}
+				}
+			}
+		}
+	}
 }
