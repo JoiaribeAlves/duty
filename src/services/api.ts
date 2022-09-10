@@ -60,6 +60,10 @@ export async function getDuty(date: string) {
 	return app.get<IDuty>(`/duty/${date}`);
 }
 
+export async function deleteShift(id: string) {
+	return app.delete(`/delete/duty/${id}`);
+}
+
 export async function signin(
 	email: string,
 	password: string
