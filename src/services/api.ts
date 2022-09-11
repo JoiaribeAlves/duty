@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 
-import { IDuties, IDuty, IPharmacy, IUser } from "../interfaces";
+import { IDuties, IDuty, IPharmacy, IShift, IUser } from "../interfaces";
 
 export const app = axios.create({
 	baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -50,6 +50,14 @@ export async function updatePharmacy(id: string, data: IPharmacy) {
 
 export async function deletePharmacy(id: string) {
 	return app.delete(`/delete/pharmacy/${id}`);
+}
+
+export async function createShift(data: IShift) {
+	return app.post("/register/duty", {
+		pharmacyId: data.pharmacyId,
+		startDate: data.startDate,
+		endDate: data.endDate,
+	});
 }
 
 export async function getDuties() {
