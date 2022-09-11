@@ -59,7 +59,7 @@
 .mainAdm {
 	padding: 6rem 2rem 2rem 22%;
 
-	.new {
+	.btnNewPharmacyOrShift {
 		text-align: right;
 		margin-bottom: 2rem;
 
@@ -82,6 +82,21 @@
 				font-size: 1rem;
 				padding-top: 3px;
 			}
+		}
+	}
+
+	.btnRefreshWindow {
+		padding: 0.8rem 1rem;
+		background-color: #1f1f1f;
+		color: #dddddd;
+		border: 1px solid #333333;
+		border-radius: 0.312rem;
+		font-size: 1.1rem;
+		cursor: pointer;
+		transition-duration: 0.2s;
+
+		&:hover {
+			background-color: #4daa57;
 		}
 	}
 
@@ -138,6 +153,74 @@
 						}
 					}
 				}
+			}
+		}
+	}
+
+	.form {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		margin-top: 1rem;
+
+		.inputs {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 1rem;
+
+			.input {
+				display: flex;
+				flex-direction: column;
+				gap: 0.312rem;
+
+				input,
+				select {
+					padding: 0.8rem;
+					background-color: #1f1f1f;
+					color: #dddddd;
+					border: 1px solid transparent;
+					border-radius: 0.312rem;
+					font-size: 1.1rem;
+					transition-duration: 0.2s;
+
+					&:focus {
+						border-color: #333333;
+					}
+				}
+
+				input {
+					&:disabled {
+						cursor: not-allowed;
+					}
+				}
+
+				small {
+					color: #83353c;
+					font-size: 0.8rem;
+				}
+			}
+		}
+
+		button {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 0.312rem;
+			padding: 0.8rem;
+			background-color: #1f1f1f;
+			color: #dddddd;
+			border: none;
+			border-radius: 0.312rem;
+			cursor: pointer;
+			font-size: 1.1rem;
+			transition-duration: 0.2s;
+
+			&:hover {
+				background-color: #4daa57;
+			}
+
+			&:disabled {
+				cursor: not-allowed;
 			}
 		}
 	}
