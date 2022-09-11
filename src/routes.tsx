@@ -11,6 +11,7 @@ import { NewPharmacyAdm } from "./components/admin/pharmacy/new";
 import { EditPharmacyAdm } from "./components/admin/pharmacy/edit";
 import { ShiftsAdm } from "./components/admin/shifts";
 import { NewShiftAdm } from "./components/admin/shift/new";
+import { EditShiftAdm } from "./components/admin/shift/edit";
 import { NotFound } from "./components/not-found";
 
 export function MainRoutes() {
@@ -72,6 +73,15 @@ export function MainRoutes() {
 						element={
 							<Protected>
 								<NewShiftAdm />
+							</Protected>
+						}
+					/>
+
+					<Route
+						path="/admin/plantao/editar/:shiftId"
+						element={
+							<Protected>
+								<EditShiftAdm />
 							</Protected>
 						}
 					/>
