@@ -10,6 +10,7 @@ import { PharmaciesAdm } from "./components/admin/pharmacies";
 import { NewPharmacyAdm } from "./components/admin/pharmacy/new";
 import { EditPharmacyAdm } from "./components/admin/pharmacy/edit";
 import { ShiftsAdm } from "./components/admin/shifts";
+import { NewShiftAdm } from "./components/admin/shift/new";
 import { NotFound } from "./components/not-found";
 
 export function MainRoutes() {
@@ -62,6 +63,15 @@ export function MainRoutes() {
 						element={
 							<Protected>
 								<ShiftsAdm />
+							</Protected>
+						}
+					/>
+
+					<Route
+						path="/admin/plantao/novo"
+						element={
+							<Protected>
+								<NewShiftAdm />
 							</Protected>
 						}
 					/>
