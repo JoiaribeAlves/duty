@@ -83,33 +83,35 @@ export function NewShiftAdm() {
 	}
 
 	const onSubmit: SubmitHandler<IShift> = async (data) => {
-		const formatedData = {
-			pharmacyId: data.pharmacyId,
-			startDate: `${data.startDate}T02:00:00.000Z`,
-			endDate: `${data.endDate}T11:00:00.000Z`,
-		};
+		if (confirm("Você realmente deseja cadastrar um novo Plantão?")) {
+			const formatedData = {
+				pharmacyId: data.pharmacyId,
+				startDate: `${data.startDate}T02:00:00.000Z`,
+				endDate: `${data.endDate}T11:00:00.000Z`,
+			};
 
-		try {
-			setCreating(true);
+			try {
+				setCreating(true);
 
-			await createShift(formatedData);
+				await createShift(formatedData);
 
-			setFocus("pharmacyId");
-			toast.success("Plantão criado com sucesso.");
-		} catch (error) {
-			if (axios.isAxiosError(error)) {
-				if (error.response?.status === 422) {
-					return toast.warning(
-						"Já existe um Plantão cadastrado para esta data."
-					);
-				} else {
-					return toast.error(
-						"Não foi possível criar o Plantão. Erro interno no servidor."
-					);
+				setFocus("pharmacyId");
+				toast.success("Plantão criado com sucesso.");
+			} catch (error) {
+				if (axios.isAxiosError(error)) {
+					if (error.response?.status === 422) {
+						return toast.warning(
+							"Já existe um Plantão cadastrado para esta data."
+						);
+					} else {
+						return toast.error(
+							"Não foi possível criar o Plantão. Erro interno no servidor."
+						);
+					}
 				}
+			} finally {
+				setCreating(false);
 			}
-		} finally {
-			setCreating(false);
 		}
 	};
 
