@@ -60,6 +60,8 @@ export function ShiftsAdm() {
 	return (
 		<LayoutAdm>
 			<>
+				<ToastContainer theme="dark" />
+
 				<p className={styles.btnNewPharmacyOrShift}>
 					<Link to="/admin/plantao/novo">
 						<FaPlus /> Novo Plantão
