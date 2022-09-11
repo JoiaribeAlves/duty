@@ -22,6 +22,13 @@ export interface IDuty {
 	pharmacy: IPharmacy;
 }
 
+export interface IShift {
+	shiftId?: string;
+	pharmacyId: string;
+	startDate: string;
+	endDate: string;
+}
+
 export interface IDuties {
 	id: string;
 	startDate: Date;
