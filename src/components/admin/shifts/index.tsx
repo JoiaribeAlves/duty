@@ -18,9 +18,11 @@ export function ShiftsAdm() {
 	});
 
 	if (isLoading) {
-		<LayoutAdm>
-			<Spiner />
-		</LayoutAdm>;
+		return (
+			<LayoutAdm>
+				<Spiner />
+			</LayoutAdm>
+		);
 	}
 
 	if (isError) {
@@ -58,7 +60,7 @@ export function ShiftsAdm() {
 	return (
 		<LayoutAdm>
 			<>
-				<p className={styles.new}>
+				<p className={styles.btnNewPharmacyOrShift}>
 					<Link to="/admin/plantao/novo">
 						<FaPlus /> Novo Plantão
 					</Link>
