@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/auth";
 import { Main } from "./components/main";
 import { Shifts } from "./components/shifts";
+import { About } from "./components/about";
 import { Login } from "./components/admin/login";
 import { Protected } from "./components/protected";
 import { DashboardAdm } from "./components/admin/dashboard";
@@ -21,6 +22,7 @@ export function MainRoutes() {
 				<Routes>
 					<Route path="/" element={<Main />} />
 					<Route path="/plantoes" element={<Shifts />} />
+					<Route path="/sobre" element={<About />} />
 
 					<Route path="/admin/login" element={<Login />} />
 					<Route
