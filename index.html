@@ -23,6 +23,19 @@
 			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
 			rel="stylesheet"
 		/>
+
+		<script
+			src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
+			async=""
+		></script>
+		<script>
+			window.OneSignal = window.OneSignal || [];
+			OneSignal.push(function () {
+				OneSignal.init({
+					appId: "e0f2b466-d359-4f68-844c-a3994407434f",
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<div id="root"></div>
