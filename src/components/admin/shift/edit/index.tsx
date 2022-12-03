@@ -40,7 +40,10 @@ export function EditShiftAdm() {
 		);
 	}
 
-	const onSubmit: SubmitHandler<IShift> = async (data) => {
+	// const onSubmit: SubmitHandler<IShift> = async (data) => {
+	// 	return;
+	// }
+	const onSubmit = async (data: any) => {
 		return;
 	}
 	return (
