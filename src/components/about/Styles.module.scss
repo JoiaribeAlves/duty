@@ -29,7 +29,9 @@
 		margin-top: 2rem;
 
 		p {
+			width: 100%;
 			text-align: left;
+			overflow-x: scroll;
 
 			span {
 				font-weight: bold;
