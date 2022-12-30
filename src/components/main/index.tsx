@@ -6,7 +6,7 @@ import Helmet from "react-helmet";
 
 import { getDuty } from "../../services/api";
 import { Layout } from "../Layout";
-import { ErrorLoadData, Spiner } from "../Utils";
+import { ErrorLoadData, Spiner, WhatsappGroupModal } from "../Utils";
 
 import styles from "./Styles.module.scss";
 
@@ -114,6 +114,8 @@ export function Main(): JSX.Element {
 						<FaMapMarkedAlt /> Ver no mapa
 					</a>
 				</div>
+
+				<WhatsappGroupModal />
 
 				{data?.data.pharmacy.whatsapp && (
 					<a
