@@ -71,6 +71,59 @@ body {
 			color: #dddddd;
 		}
 	}
+
+	.modal {
+		position: absolute;
+		top: -100%;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 90%;
+		max-width: 620px;
+		padding: 2rem;
+		border-radius: 0.312rem;
+		background-color: #141414;
+		border: 1px solid #333333;
+		z-index: 3;
+		animation: modal 0.5s ease 1 forwards;
+
+		h2 {
+			text-align: center;
+		}
+
+		p {
+			margin: 1rem 0;
+		}
+
+		.modalActions {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			gap: 1rem;
+
+			button {
+				padding: 1rem 0.5rem;
+				background-color: transparent;
+				color: #dddddd;
+				border: none;
+				cursor: pointer;
+				font-size: 1.1rem;
+			}
+
+			a {
+				padding: 1rem 0.5rem;
+				background-color: #4daa57;
+				color: #dddddd;
+				border-radius: 0.312rem;
+				text-decoration: none;
+			}
+		}
+	}
+
+	@keyframes modal {
+		to {
+			top: 0;
+		}
+	}
 }
 
 @media (max-width: 768px) {
@@ -92,6 +145,28 @@ body {
 
 			button {
 				font-size: 1rem;
+			}
+		}
+
+		.modal {
+			padding: 1rem;
+
+			p {
+				margin: 0.8rem 0;
+			}
+
+			.modalActions {
+				gap: 0.8rem;
+
+				button {
+					padding: 0.5rem;
+					font-size: 1rem;
+				}
+
+				a {
+					text-align: center;
+					padding: 0.5rem;
+				}
 			}
 		}
 	}
