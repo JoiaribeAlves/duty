@@ -60,7 +60,15 @@ export async function createShift(data: IShift) {
 	});
 }
 
-export async function getDuties() {
+export async function getDuties(month?: string) {
+	if (month) {
+		return app.get<IDuties[]>(`/duties?month=${month}`);
+	} else {
+		return app.get<IDuties[]>("/duties");
+	}
+}
+
+export async function getAllShifts() {
 	return app.get<IDuties[]>("/duties");
 }
 
