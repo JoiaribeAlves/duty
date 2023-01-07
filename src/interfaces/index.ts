@@ -31,6 +31,7 @@ export interface IShift {
 
 export interface IDuties {
 	id: string;
+	month: string;
 	startDate: Date;
 	endDate: Date;
 }
