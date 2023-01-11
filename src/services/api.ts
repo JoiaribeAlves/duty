@@ -68,10 +68,6 @@ export async function getDuties(month?: string) {
 	}
 }
 
-export async function getAllShifts() {
-	return app.get<IDuties[]>("/duties");
-}
-
 export async function getDuty(date: string) {
 	return app.get<IDuty>(`/duty/${date}`);
 }
