@@ -23,6 +23,7 @@ interface IFormInputs {
 	linkToMap: string;
 	city: string;
 	state: string;
+	imageUrl: string;
 }
 
 const schema = yup
@@ -104,6 +105,7 @@ export function NewPharmacyAdm() {
 				city: data.city,
 				state: data.state,
 			},
+			imageUrl: data.imageUrl,
 		};
 
 		try {
