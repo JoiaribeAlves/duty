@@ -12,6 +12,7 @@ export interface IPharmacy {
 		complement: string;
 		linkToMap: string;
 	};
+	imageUrl: string;
 }
 
 export interface IDuty {
