@@ -1,15 +1,26 @@
+import { useState } from "react";
 import { useQuery } from "react-query";
 import format from "date-fns/format";
 import { Helmet } from "react-helmet";
-import { FaCamera, FaInfoCircle } from "react-icons/fa";
+import {
+	FaCamera,
+	FaInfoCircle,
+	FaMapMarkerAlt,
+	FaPhone,
+	FaTimes,
+} from "react-icons/fa";
 
 import { Layout } from "../Layout";
 import { ErrorLoadData, Spiner } from "../Utils";
-import { getDuties } from "../../services/api";
+import { getDuties, getPharmacy } from "../../services/api";
+import { IPharmacy } from "../../interfaces";
 
 import styles from "./Styles.module.scss";
 
 export function Shifts() {
+	const [showModal, setShowModal] = useState(false);
+	const [pharmacyModal, setPharmacyModal] = useState<IPharmacy>();
+
 	function getCurrentMonth() {
 		const month = new Date().getMonth();
 
@@ -72,6 +83,14 @@ export function Shifts() {
 		"Dezembro",
 	];
 
+	async function loadPharmacyData(id: string) {
+		setShowModal(true);
+
+		const res = await getPharmacy(id);
+
+		setPharmacyModal(res.data);
+	}
+
 	const currentMonthIndex = new Date().getMonth();
 	const currentMonth = months[currentMonthIndex];
 
@@ -82,7 +101,7 @@ export function Shifts() {
 
 				<meta
 					name="description"
-					content={`Escala de plantões de farmácia durante o mês de ${currentMonth}`}
+					content={`Escala das farmácias que ficarão de plantão durante o mês de ${currentMonth}`}
 				/>
 			</Helmet>
 
@@ -100,13 +119,47 @@ export function Shifts() {
 
 							<p>{format(new Date(shift.startDate), "dd - MM - yy")}</p>
 
-							<a href={`/plantoes/${shift.pharmacyId}`}>
-								<FaInfoCircle />
-								Detalhes
-							</a>
+							<button
+								type="button"
+								onClick={() => loadPharmacyData(shift.pharmacyId)}
+							>
+								<FaInfoCircle /> Detalhes
+							</button>
 						</li>
 					))}
 				</ul>
+
+				{showModal && (
+					<div className={styles.modal}>
+						<div
+							className={styles.background}
+							style={{
+								backgroundImage: `url("${pharmacyModal?.imageUrl}")`,
+							}}
+						></div>
+
+						<div className={styles.content}>
+							<h3>{pharmacyModal?.name}</h3>
+							<p>
+								<FaMapMarkerAlt /> {pharmacyModal?.address.street},{" "}
+								{pharmacyModal?.address.number},{" "}
+								{pharmacyModal?.address.district}
+							</p>
+							<p>
+								<FaPhone />
+								{pharmacyModal?.telephone}
+							</p>
+						</div>
+
+						<button
+							type="button"
+							className={styles.closeModal}
+							onClick={() => setShowModal(false)}
+						>
+							<FaTimes />
+						</button>
+					</div>
+				)}
 			</Layout>
 		</>
 	);
