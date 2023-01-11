@@ -29,7 +29,7 @@
 			font-size: 5rem;
 		}
 
-		a {
+		button {
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -38,8 +38,8 @@
 			padding: 1rem;
 			background-color: #1f1f1f;
 			color: #dddddd;
+			border: none;
 			font-size: 1.2rem;
-			text-decoration: none;
 			transition-duration: 0.2s;
 			cursor: pointer;
 
@@ -47,6 +47,79 @@
 				filter: brightness(0.9);
 			}
 		}
+	}
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 90%;
+	max-width: 720px;
+	background-color: #141414;
+	border: 1px solid #333333;
+	border-radius: 0.312rem;
+	animation: modal 0.3s ease 1 forwards;
+	opacity: 0;
+	z-index: -1;
+
+	.background {
+		height: 12rem;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	.content {
+		padding: 2rem;
+
+		h3 {
+			color: #319f4f;
+		}
+
+		p {
+			display: flex;
+			align-items: center;
+			gap: 0.312rem;
+
+			&:nth-child(2) {
+				margin: 1rem 0;
+			}
+
+			svg {
+				color: #319f4f;
+			}
+		}
+	}
+
+	.closeModal {
+		position: absolute;
+		top: -15px;
+		right: -15px;
+		width: 30px;
+		height: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #1f1f1f;
+		color: #dddddd;
+		border: 1px solid #333333;
+		border-radius: 50%;
+		transition-duration: 0.2s;
+		cursor: pointer;
+
+		&:hover {
+			color: #319f4f;
+		}
+	}
+}
+
+@keyframes modal {
+	to {
+		top: 8%;
+		opacity: 1;
+		z-index: 4;
 	}
 }
 
@@ -64,7 +137,7 @@
 				font-size: 3rem;
 			}
 
-			a {
+			button {
 				padding: 0.8rem;
 				font-size: 1.1rem;
 			}
