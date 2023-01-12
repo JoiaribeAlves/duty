@@ -19,7 +19,7 @@ import styles from "./Styles.module.scss";
 
 export function Shifts() {
 	const [showModal, setShowModal] = useState(false);
-	const [pharmacyModal, setPharmacyModal] = useState<IPharmacy>();
+	const [pharmacyModal, setPharmacyModal] = useState<IPharmacy | null>(null);
 
 	function getCurrentMonth() {
 		const month = new Date().getMonth();
@@ -130,34 +130,50 @@ export function Shifts() {
 				</ul>
 
 				{showModal && (
-					<div className={styles.modal}>
-						<div
-							className={styles.background}
-							style={{
-								backgroundImage: `url("${pharmacyModal?.imageUrl}")`,
-							}}
-						></div>
+					<div className={styles.modalContainer}>
+						<div className={styles.modal}>
+							<div
+								className={styles.image}
+								style={{
+									backgroundImage: `url("${pharmacyModal?.imageUrl}")`,
+								}}
+							></div>
 
-						<div className={styles.content}>
-							<h3>{pharmacyModal?.name}</h3>
-							<p>
-								<FaMapMarkerAlt /> {pharmacyModal?.address.street},{" "}
-								{pharmacyModal?.address.number},{" "}
-								{pharmacyModal?.address.district}
-							</p>
-							<p>
-								<FaPhone />
-								{pharmacyModal?.telephone}
-							</p>
+							<div className={styles.info}>
+								<h3>{pharmacyModal?.name ?? ""}</h3>
+								<p>
+									{pharmacyModal ? (
+										<>
+											<FaMapMarkerAlt /> {pharmacyModal.address.street},{" "}
+											{pharmacyModal.address.number},{" "}
+											{pharmacyModal.address.district}
+										</>
+									) : (
+										<FaMapMarkerAlt />
+									)}
+								</p>
+								<p>
+									{pharmacyModal ? (
+										<>
+											<FaPhone />
+											{pharmacyModal.telephone}
+										</>
+									) : (
+										<FaPhone />
+									)}
+								</p>
+							</div>
+
+							<button
+								type="button"
+								className={styles.closeModal}
+								onClick={() => {
+									setShowModal(false), setPharmacyModal(null);
+								}}
+							>
+								<FaTimes />
+							</button>
 						</div>
-
-						<button
-							type="button"
-							className={styles.closeModal}
-							onClick={() => setShowModal(false)}
-						>
-							<FaTimes />
-						</button>
 					</div>
 				)}
 			</Layout>
