@@ -1,4 +1,7 @@
 import { Helmet } from "react-helmet";
+import copy from "copy-to-clipboard";
+import { ToastContainer, toast } from "react-toastify";
+import { FaCopy } from "react-icons/fa";
 
 import { Layout } from "../Layout";
 import qrCodePix from "/qrcode-pix.png";
@@ -6,8 +9,18 @@ import qrCodePix from "/qrcode-pix.png";
 import styles from "./Styles.module.scss";
 
 export function About() {
-	const qrCodeValue =
-		"00020126580014BR.GOV.BCB.PIX01367335baf2-9191-4db4-a456-a33fb8ae470d52040000530398654042.005802BR5914JoiaribeGAlves6004Jaru62170513ApoioPlantoes63047B14";
+	function copyToClipboard() {
+		const qrCodeText =
+			"00020126580014BR.GOV.BCB.PIX01367335baf2-9191-4db4-a456-a33fb8ae470d52040000530398654042.005802BR5914JoiaribeGAlves6004Jaru62170513ApoioPlantoes63047B14";
+
+		copy(qrCodeText, {
+			onCopy: () => {
+				toast.success(
+					'QRCode copiado com sucesso! No APP do seu banco, utilize a opção PIX "Copia e Cola"'
+				);
+			},
+		});
+	}
 
 	return (
 		<>
@@ -21,6 +34,8 @@ export function About() {
 			</Helmet>
 
 			<Layout>
+				<ToastContainer theme="dark" />
+
 				<div className={styles.about}>
 					<h2>Sobre os plantões</h2>
 
@@ -60,10 +75,9 @@ export function About() {
 					<div className={styles.qrCode}>
 						<img src={qrCodePix} alt="QRCode Pix" width={150} height={150} />
 
-						<p>
-							<span>PIX Copia e Cola: </span>
-							{qrCodeValue}
-						</p>
+						<button type="button" onClick={copyToClipboard}>
+							<FaCopy /> Copiar QRCode
+						</button>
 					</div>
 				</div>
 			</Layout>
