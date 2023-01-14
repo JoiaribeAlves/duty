@@ -1,4 +1,4 @@
-import { FaCalendarAlt, FaHome, FaInfoCircle, FaUserShield } from "react-icons/fa";
+import { FaCalendarAlt, FaHome, FaInfoCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 import styles from "./Styles.module.scss";
@@ -28,13 +28,6 @@ export function Menu(props: IMenuPros) {
 					<Link to="/sobre">
 						<FaInfoCircle />
 						Sobre
-					</Link>
-				</li>
-
-				<li>
-					<Link to="/admin/login">
-						<FaUserShield />
-						Área Restrita
 					</Link>
 				</li>
 			</ul>
