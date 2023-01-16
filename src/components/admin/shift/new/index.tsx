@@ -10,9 +10,14 @@ import * as yup from "yup";
 import { LayoutAdm } from "../../Layout";
 import { Spiner } from "../../../Utils";
 import { createShift, getPharmacies } from "../../../../services/api";
-import { IShift } from "../../../../interfaces";
 
-import styles from "../../Styles.module.scss";
+import styles from "./Styles.module.scss";
+
+interface IShiftSchema {
+	pharmacyId: string;
+	date: string;
+	month: string;
+}
 
 const schema = yup
 	.object({
@@ -20,16 +25,12 @@ const schema = yup
 			.string()
 			.required("Este campo é obrigatório.")
 			.min(3, "O Nome deve ter pelo menos 3 caracteres."),
-		startDate: yup
+		date: yup
 			.string()
 			.required("Este campo é obrigatório.")
 			.min(10, "Data inválida.")
 			.max(10, "Data inválida."),
-		endDate: yup
-			.string()
-			.required("Este campo é obrigatório.")
-			.min(10, "Data inválida.")
-			.max(10, "Data inválida."),
+		month: yup.string().required("Este campo é obrigatório."),
 	})
 	.required();
 
@@ -41,7 +42,7 @@ export function NewShiftAdm() {
 		register,
 		setFocus,
 		formState: { errors },
-	} = useForm<IShift>({ resolver: yupResolver(schema) });
+	} = useForm<IShiftSchema>({ resolver: yupResolver(schema) });
 
 	const tenSecondsInMilliseconds = 1000 * 10;
 	const { data, isError, isLoading } = useQuery(
@@ -82,18 +83,19 @@ export function NewShiftAdm() {
 		);
 	}
 
-	const onSubmit: SubmitHandler<IShift> = async (data) => {
+	const onSubmit: SubmitHandler<IShiftSchema> = async (data) => {
 		if (confirm("Você realmente deseja cadastrar um novo Plantão?")) {
-			const formatedData = {
+			const formattedData = {
 				pharmacyId: data.pharmacyId,
-				startDate: `${data.startDate}T02:00:00.000Z`,
-				endDate: `${data.endDate}T11:00:00.000Z`,
+				month: data.month,
+				startDate: `${data.date}T02:00:00.000Z`,
+				endDate: `${data.date}T11:00:00.000Z`,
 			};
 
 			try {
 				setCreating(true);
 
-				await createShift(formatedData);
+				await createShift(formattedData);
 
 				setFocus("pharmacyId");
 				toast.success("Plantão criado com sucesso.");
@@ -125,10 +127,6 @@ export function NewShiftAdm() {
 				<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
 					<div className={styles.inputs}>
 						<div className={styles.input}>
-							<input type="text" placeholder="ID do Plantão" disabled={true} />
-						</div>
-
-						<div className={styles.input}>
 							<select {...register("pharmacyId")}>
 								{data?.data.map((pharmacy, index) => (
 									<option key={index + 1} value={pharmacy.id}>
@@ -142,26 +140,37 @@ export function NewShiftAdm() {
 						<div className={styles.input}>
 							<input
 								type="text"
-								placeholder="Início yyyy-mm-dd"
-								{...register("startDate")}
+								placeholder="Data yyyy-mm-dd"
+								{...register("date")}
 							/>
-							<small>{errors.startDate?.message}</small>
+							<small>{errors.date?.message}</small>
 						</div>
 
 						<div className={styles.input}>
-							<input
-								type="text"
-								placeholder="Término yyyy-mm-dd"
-								{...register("endDate")}
-							/>
-							<small>{errors.endDate?.message}</small>
+							<select {...register("month")}>
+								<option value="january">Janeiro</option>
+								<option value="february">Fevereiro</option>
+								<option value="march">Março</option>
+								<option value="april">Abril</option>
+								<option value="may">Maio</option>
+								<option value="june">Junho</option>
+								<option value="july">Julho</option>
+								<option value="august">Agosto</option>
+								<option value="september">Setembro</option>
+								<option value="october">Outubro</option>
+								<option value="november">Novembro</option>
+								<option value="december">Dezembro</option>
+							</select>
+							<small>{errors.month?.message}</small>
 						</div>
 					</div>
 
-					<button type="submit" disabled={creating}>
-						<FaSave />
-						Cadastrar Plantão
-					</button>
+					<div className={styles.actions}>
+						<button type="submit" disabled={creating}>
+							<FaSave />
+							Cadastrar
+						</button>
+					</div>
 				</form>
 			</>
 		</LayoutAdm>
