@@ -71,13 +71,11 @@ export function NewShiftAdm() {
 				<>
 					<ToastContainer theme="dark" />
 
-					<button
-						type="button"
-						className={styles.btnRefreshWindow}
-						onClick={() => window.location.reload()}
-					>
-						Tentar novamente
-					</button>
+					<div className={styles.btnRefreshWindow}>
+						<button type="button" onClick={() => window.location.reload()}>
+							Tentar novamente
+						</button>
+					</div>
 				</>
 			</LayoutAdm>
 		);
