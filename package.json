@@ -14,7 +14,6 @@
   "dependencies": {
     "@hookform/resolvers": "^2.9.7",
     "axios": "^0.27.2",
-    "copy-to-clipboard": "^3.3.3",
     "countdown": "^2.6.0",
     "date-fns": "^2.29.1",
     "dotenv": "^16.0.1",
@@ -22,6 +21,7 @@
     "ra-data-json-server": "^4.3.0",
     "react": "^18.2.0",
     "react-admin": "^4.3.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.34.2",
@@ -34,6 +34,7 @@
   "devDependencies": {
     "@types/countdown": "^0.0.8",
     "@types/react": "^18.0.15",
+    "@types/react-copy-to-clipboard": "^5.0.4",
     "@types/react-dom": "^18.0.6",
     "@types/react-helmet": "^6.1.5",
     "@vitejs/plugin-react": "^2.0.0",
