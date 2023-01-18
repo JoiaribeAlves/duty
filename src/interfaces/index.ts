@@ -1,5 +1,5 @@
 export interface IPharmacy {
-	id?: string;
+	id: string;
 	name: string;
 	telephone: string;
 	whatsapp: string;
@@ -17,37 +17,19 @@ export interface IPharmacy {
 
 export interface IDuty {
 	duty: {
-		startDate: Date;
-		endDate: Date;
+		id: string;
+		pharmacyId: string;
+		month: string;
+		startDate: string;
+		endDate: string;
 	};
 	pharmacy: IPharmacy;
-}
-
-export interface IShift {
-	shiftId?: string;
-	pharmacyId: string;
-	startDate: string;
-	endDate: string;
 }
 
 export interface IDuties {
 	id: string;
 	pharmacyId: string;
 	month: string;
-	startDate: Date;
-	endDate: Date;
-}
-
-export interface IUser {
-	user?: string;
-	token?: string;
-}
-
-export interface IContext {
-	loading: boolean;
-	errorMsg: boolean;
-	authenticated: boolean;
-	user: IUser | null;
-	login: (email: string, password: string) => Promise<void>;
-	logout: () => void;
+	startDate: string;
+	endDate: string;
 }
