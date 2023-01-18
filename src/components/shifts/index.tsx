@@ -97,11 +97,11 @@ export function Shifts() {
 	return (
 		<>
 			<Helmet>
-				<title>Escala de Plantões</title>
+				<title>Escala | Plantão de Farmácia</title>
 
 				<meta
 					name="description"
-					content={`Escala das farmácias que ficarão de plantão durante o mês de ${currentMonth}`}
+					content={`Escala das farmácias que ficarão de plantão durante o mês de ${currentMonth}.`}
 				/>
 			</Helmet>
 

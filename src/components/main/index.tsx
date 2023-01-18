@@ -65,7 +65,12 @@ export function Main(): JSX.Element {
 	return (
 		<>
 			<Helmet>
-				<title>Plantão de Farmácia</title>
+				<title>Início | Plantão de Farmácia</title>
+
+				<meta
+					name="description"
+					content="Veja qual farmácia está de plantão no município de Jaru-RO."
+				/>
 			</Helmet>
 
 			<Layout>

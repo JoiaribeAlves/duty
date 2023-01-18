@@ -21,11 +21,11 @@ export function About() {
 	return (
 		<>
 			<Helmet>
-				<title>Sobre | Plantão de Farmácias</title>
+				<title>Sobre | Plantão de Farmácia</title>
 
 				<meta
 					name="description"
-					content="Saiba mais sobre o projeto Plantão de Farmácias."
+					content="Saiba mais sobre o projeto Plantão de Farmácia."
 				/>
 			</Helmet>
 
