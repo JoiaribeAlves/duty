@@ -10,9 +10,9 @@ import {
 	FaTimes,
 } from "react-icons/fa";
 
+import { getDutyByMonth, getPharmacyById } from "../../services/api";
 import { Layout } from "../Layout";
 import { ErrorLoadData, Spiner } from "../Utils";
-import { getDuties, getPharmacy } from "../../services/api";
 import { IPharmacy } from "../../interfaces";
 
 import styles from "./Styles.module.scss";
@@ -53,8 +53,8 @@ export function Shifts() {
 	}
 
 	const { data, isError, isLoading } = useQuery(
-		["shifts"],
-		() => getDuties(getCurrentMonth()),
+		["duties"],
+		() => getDutyByMonth(getCurrentMonth()),
 		{
 			staleTime: 1000 * 60, // One minute
 		}
@@ -86,7 +86,7 @@ export function Shifts() {
 	async function loadPharmacyData(id: string) {
 		setShowModal(true);
 
-		const res = await getPharmacy(id);
+		const res = await getPharmacyById(id);
 
 		setPharmacyModal(res.data);
 	}
