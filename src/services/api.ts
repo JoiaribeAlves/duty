@@ -1,102 +1,31 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 
-import { IDuties, IDuty, IPharmacy, IShift, IUser } from "../interfaces";
+import { IDuties, IDuty, IPharmacy } from "../interfaces";
 
 export const app = axios.create({
 	baseURL: import.meta.env.VITE_API_BASE_URL,
 });
 
-export async function getPharmacy(id: string) {
-	return app.get<IPharmacy>(`/pharmacy/${id}`);
+export async function getAllPharmacies() {
+	return app.get<IPharmacy[] | []>("/pharmacies");
 }
 
-export async function getPharmacies() {
-	return app.get<IPharmacy[]>("/pharmacies");
+export async function getPharmacyById(id: string) {
+	return app.get<IPharmacy>(`/pharmacies/${id}`);
 }
 
-export async function createPharmacy(data: IPharmacy) {
-	return app.post("/register/pharmacy", {
-		name: data.name,
-		telephone: data.telephone,
-		whatsapp: data.whatsapp,
-		address: {
-			street: data.address.street,
-			number: data.address.number,
-			district: data.address.district,
-			complement: data.address.complement,
-			linkToMap: data.address.linkToMap,
-			city: data.address.city,
-			state: data.address.state,
-		},
-	});
+export async function getAllDuties() {
+	return app.get<IDuties[] | []>("/duties");
 }
 
-export async function updatePharmacy(id: string, data: IPharmacy) {
-	return app.patch(`/update/pharmacy/${id}`, {
-		name: data.name,
-		telephone: data.telephone,
-		whatsapp: data.whatsapp,
-		address: {
-			street: data.address.street,
-			number: data.address.number,
-			district: data.address.district,
-			complement: data.address.complement,
-			linkToMap: data.address.linkToMap,
-			city: data.address.city,
-			state: data.address.state,
-		},
-	});
+export async function getDutyByDate(date: string) {
+	return app.get<IDuty>(`/duties/date/${date}`);
 }
 
-export async function deletePharmacy(id: string) {
-	return app.delete(`/delete/pharmacy/${id}`);
+export async function getDutyById(id: string) {
+	return app.get<IDuty>(`/duties/id/${id}`);
 }
 
-export async function createShift(data: IShift) {
-	return app.post("/register/duty", {
-		pharmacyId: data.pharmacyId,
-		startDate: data.startDate,
-		endDate: data.endDate,
-	});
+export async function getDutyByMonth(month: string) {
+	return app.get<IDuties[] | []>(`/duties/month${month}`);
 }
-
-export async function getDuties(month?: string) {
-	if (month) {
-		return app.get<IDuties[]>(`/duties?month=${month}`);
-	} else {
-		return app.get<IDuties[]>("/duties");
-	}
-}
-
-export async function getDuty(date: string) {
-	return app.get<IDuty>(`/duty/${date}`);
-}
-
-export async function deleteShift(id: string) {
-	return app.delete(`/delete/duty/${id}`);
-}
-
-export async function signin(
-	email: string,
-	password: string
-): Promise<IUser | null> {
-	try {
-		const { data } = await app.post<IUser>("/session", { email, password });
-
-		return data;
-	} catch (error) {
-		return null;
-	}
-}
-
-// app.interceptors.request.use((config: AxiosRequestConfig) => {
-// 	const token = localStorage.getItem("@token");
-
-// 	if (config.headers === undefined) {
-// 		config.headers = {};
-// 	}
-
-// 	config.headers.Authorization = `Bearer ${token}`;
-
-// 	return config;
-// });
