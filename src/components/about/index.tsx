@@ -16,7 +16,7 @@ export function About() {
 		copy(qrCodeText, {
 			onCopy: () => {
 				toast.success(
-					'QRCode copiado com sucesso! No APP do seu banco, utilize a opção PIX "Copia e Cola"'
+					'QRCode copiado com sucesso! No APP do seu banco, utilize a opção "PIX Copia e Cola".'
 				);
 			},
 		});
