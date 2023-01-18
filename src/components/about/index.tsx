@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { FaCopy } from "react-icons/fa";
 
 import { Layout } from "../Layout";
-import qrCodePix from "/qrcode-pix.png";
+import qrCodePix from "/images/qrcode-pix.png";
 
 import styles from "./Styles.module.scss";
 
