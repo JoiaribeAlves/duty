@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { ToastContainer, toast } from "react-toastify";
 import Helmet from "react-helmet";
 
-import { getDuty } from "../../services/api";
+import { getDutyByDate } from "../../services/api";
 import { Layout } from "../Layout";
 import { ErrorLoadData, Spiner, WhatsappGroupModal } from "../Utils";
 
@@ -47,8 +47,8 @@ export function Main(): JSX.Element {
 	}
 
 	const { isLoading, error, data } = useQuery(
-		["shift"],
-		() => getDuty(setDateAndTimeToLoadContent()),
+		["duty"],
+		() => getDutyByDate(setDateAndTimeToLoadContent()),
 		{
 			staleTime: 1000 * 60, // One minute
 		}
