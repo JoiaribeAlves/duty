@@ -27,5 +27,5 @@ export async function getDutyById(id: string) {
 }
 
 export async function getDutyByMonth(month: string) {
-	return app.get<IDuties[] | []>(`/duties/month${month}`);
+	return app.get<IDuties[] | []>(`/duties/month/${month}`);
 }
