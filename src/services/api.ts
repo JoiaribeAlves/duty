@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { useMonth } from "../hooks/useMonth";
+
 import { IDuties, IDuty, IPharmacy } from "../interfaces";
 
 export const app = axios.create({
@@ -14,7 +16,11 @@ export async function getPharmacyById(id: string) {
 	return app.get<IPharmacy>(`/pharmacies/${id}`);
 }
 
-export async function getAllDuties() {
+export async function getDuties(month?: number) {
+	if (month) {
+		return app.get<IDuties[] | []>(`/duties?month=${useMonth(month)}`);
+	}
+
 	return app.get<IDuties[] | []>("/duties");
 }
 
@@ -24,8 +30,4 @@ export async function getDutyByDate(date: string) {
 
 export async function getDutyById(id: string) {
 	return app.get<IDuty>(`/duties/id/${id}`);
-}
-
-export async function getDutyByMonth(month: string) {
-	return app.get<IDuties[] | []>(`/duties/month/${month}`);
 }
