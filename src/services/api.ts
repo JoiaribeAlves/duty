@@ -8,7 +8,7 @@ export const app = axios.create({
 	baseURL: import.meta.env.VITE_API_BASE_URL,
 });
 
-export async function getAllPharmacies() {
+export async function getPharmacies() {
 	return app.get<IPharmacy[] | []>("/pharmacies");
 }
 
