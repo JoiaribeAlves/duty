@@ -10,7 +10,8 @@ import {
 	FaTimes,
 } from "react-icons/fa";
 
-import { getDutyByMonth, getPharmacyById } from "../../services/api";
+import { getDuties, getPharmacyById } from "../../services/api";
+import { useMonth } from "../../hooks/useMonth";
 import { Layout } from "../Layout";
 import { ErrorLoadData, Spiner } from "../Utils";
 import { IPharmacy } from "../../interfaces";
@@ -21,40 +22,9 @@ export function Shifts() {
 	const [showModal, setShowModal] = useState(false);
 	const [pharmacyModal, setPharmacyModal] = useState<IPharmacy | null>(null);
 
-	function getCurrentMonth() {
-		const month = new Date().getMonth();
-
-		switch (month) {
-			case 0:
-				return "january";
-			case 1:
-				return "february";
-			case 2:
-				return "march";
-			case 3:
-				return "april";
-			case 4:
-				return "may";
-			case 5:
-				return "june";
-			case 6:
-				return "july";
-			case 7:
-				return "august";
-			case 8:
-				return "september";
-			case 9:
-				return "october";
-			case 10:
-				return "november";
-			default:
-				return "december";
-		}
-	}
-
 	const { data, isError, isLoading } = useQuery(
 		["duties"],
-		() => getDutyByMonth(getCurrentMonth()),
+		() => getDuties(new Date().getMonth() + 1),
 		{
 			staleTime: 1000 * 60, // One minute
 		}
@@ -68,21 +38,6 @@ export function Shifts() {
 		return <ErrorLoadData />;
 	}
 
-	const months = [
-		"Janeiro",
-		"Fevereiro",
-		"Março",
-		"Abril",
-		"Maio",
-		"Junho",
-		"Julho",
-		"Agosto",
-		"Setembro",
-		"Outubro",
-		"Novembro",
-		"Dezembro",
-	];
-
 	async function loadPharmacyData(id: string) {
 		setShowModal(true);
 
@@ -91,9 +46,6 @@ export function Shifts() {
 		setPharmacyModal(res.data);
 	}
 
-	const currentMonthIndex = new Date().getMonth();
-	const currentMonth = months[currentMonthIndex];
-
 	return (
 		<>
 			<Helmet>
@@ -101,13 +53,15 @@ export function Shifts() {
 
 				<meta
 					name="description"
-					content={`Escala das farmácias que ficarão de plantão durante o mês de ${currentMonth}.`}
+					content={`Escala das farmácias que ficarão de plantão durante o mês de ${useMonth(
+						new Date().getMonth() + 1
+					)}.`}
 				/>
 			</Helmet>
 
 			<Layout>
 				<h1 className={styles.title}>
-					Escala de plantões para o mês de {currentMonth}
+					Escala de plantões para o mês de {useMonth(new Date().getMonth() + 1)}
 				</h1>
 
 				<ul className={styles.shifts}>
