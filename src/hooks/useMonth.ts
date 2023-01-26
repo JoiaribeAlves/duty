@@ -1,5 +1,5 @@
 export function useMonth(month: number) {
-	switch (month + 1) {
+	switch (month) {
 		case 1:
 			return "Janeiro";
 
