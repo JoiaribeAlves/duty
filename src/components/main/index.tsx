@@ -39,6 +39,8 @@ export function Main(): JSX.Element {
 			)}T02%3a00%3a00.000Z`;
 		} else if (month === 12 && day === 31) {
 			return `${year + 1}-01-01T02%3a00%3a00.000Z`;
+		} else if (day === 31) {
+			return `${year}-${addZeroIfNecessary(month + 1)}-01T02%3a00%3a00.000Z`;
 		} else {
 			return `${year}-${addZeroIfNecessary(month)}-${addZeroIfNecessary(
 				day < 31 ? day + 1 : day
