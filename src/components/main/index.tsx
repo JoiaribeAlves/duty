@@ -126,6 +126,17 @@ export function Main(): JSX.Element {
 
 				<WhatsappGroupModal />
 
+				<div className={styles.whatsappGroup}>
+					<p>
+						Faça parte do nosso grupo no Whatsapp e saiba em primeira mão quem
+						está de plantão.
+					</p>
+					<a href="https://chat.whatsapp.com/EhzdDGQ5TJNC83LVdUwMcl">
+						<FaWhatsapp />
+						Entrar no grupo
+					</a>
+				</div>
+
 				{data?.data.pharmacy.whatsapp && (
 					<a
 						href={`https://api.whatsapp.com/send?phone=${data?.data.pharmacy.whatsapp}&text=Olá, estou precisando de atendimento`}
