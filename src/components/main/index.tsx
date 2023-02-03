@@ -6,7 +6,7 @@ import Helmet from "react-helmet";
 
 import { getDutyByDate } from "../../services/api";
 import { Layout } from "../Layout";
-import { ErrorLoadData, Spiner, WhatsappGroupModal } from "../Utils";
+import { ErrorLoadData, Spiner } from "../Utils";
 
 import styles from "./Styles.module.scss";
 
@@ -123,8 +123,6 @@ export function Main(): JSX.Element {
 						<FaMapMarkedAlt /> Ver no mapa
 					</a>
 				</div>
-
-				<WhatsappGroupModal />
 
 				<div className={styles.whatsappGroup}>
 					<p>
