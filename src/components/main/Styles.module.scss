@@ -67,6 +67,35 @@
 	}
 }
 
+.whatsappGroup {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	margin: 3rem 0;
+	padding: 2rem;
+	background-color: #1f1f1f;
+	border-radius: 0.312rem;
+	text-align: center;
+
+	a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.625rem;
+		height: 3rem;
+		padding: 0 1rem;
+		background-color: #0db124;
+		color: #ffffff;
+		border-radius: 999rem;
+		text-decoration: none;
+		transition-duration: 0.2s;
+
+		&:hover {
+			filter: brightness(0.9);
+		}
+	}
+}
+
 .chat {
 	position: fixed;
 	right: 2rem;
