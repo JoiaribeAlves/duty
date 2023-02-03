@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-export function Spiner() {
+export function Spinner() {
 	return (
-		<div className="spiner">
+		<div className="spinner">
 			<span></span>
 		</div>
 	);
