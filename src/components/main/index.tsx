@@ -1,4 +1,4 @@
-import { FaMapMarkedAlt, FaWhatsapp } from "react-icons/fa";
+import { FaMapMarkedAlt, FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 import { useQuery } from "react-query";
 import { format } from "date-fns";
 import { ToastContainer, toast } from "react-toastify";
@@ -46,6 +46,12 @@ export function Main(): JSX.Element {
 				day < 31 ? day + 1 : day
 			)}T02%3a00%3a00.000Z`;
 		}
+	}
+
+	function maskWhats(number: string) {
+		const n = number.split("");
+
+		return `${n[2]}${n[3]} ${n[4]}${n[5]}${n[6]}${n[7]}${n[8]}-${n[9]}${n[10]}${n[11]}${n[12]}`;
 	}
 
 	const { isLoading, error, data } = useQuery(
@@ -105,9 +111,22 @@ export function Main(): JSX.Element {
 				<div className={styles.address}>
 					<h2>{data?.data.pharmacy.name}</h2>
 
-					<h3>Telefone:</h3>
-					<p>{`${data?.data.pharmacy.telephone}`}</p>
-					<br />
+					<h3>Telefone{data?.data.pharmacy.whatsapp ? "s" : ""}:</h3>
+					<div className={styles.phones}>
+						<p className={styles.tel}>
+							<FaPhoneAlt /> {`${data?.data.pharmacy.telephone}`}
+						</p>
+						{data?.data.pharmacy.whatsapp && (
+							<a
+								href={`https://api.whatsapp.com/send?phone=${data?.data.pharmacy.whatsapp}&text=Olá, estou precisando de atendimento`}
+								target="_blank"
+								className={styles.whats}
+								title="Charmar no Whatsapp"
+							>
+								<FaWhatsapp /> {maskWhats(data?.data.pharmacy.whatsapp)}
+							</a>
+						)}
+					</div>
 
 					<h3>Endereço:</h3>
 					<p>
@@ -134,17 +153,6 @@ export function Main(): JSX.Element {
 						Entrar no grupo
 					</a>
 				</div>
-
-				{data?.data.pharmacy.whatsapp && (
-					<a
-						href={`https://api.whatsapp.com/send?phone=${data?.data.pharmacy.whatsapp}&text=Olá, estou precisando de atendimento`}
-						target="_blank"
-						className={styles.chat}
-						title="Charmar no Whatsapp"
-					>
-						<FaWhatsapp />
-					</a>
-				)}
 			</Layout>
 		</>
 	);
