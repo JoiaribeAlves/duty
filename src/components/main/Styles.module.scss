@@ -41,6 +41,29 @@
 		color: #4daa57;
 	}
 
+	.phones {
+		margin-bottom: 2rem;
+
+		.tel {
+			display: flex;
+			align-items: center;
+			gap: 0.312rem;
+			margin: 0.312rem 0;
+		}
+
+		.whats {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.312rem;
+			color: #ffffff;
+			text-decoration: none;
+
+			svg {
+				color: #0db124;
+			}
+		}
+	}
+
 	.maps {
 		display: flex;
 		justify-content: center;
@@ -96,26 +119,6 @@
 	}
 }
 
-.chat {
-	position: fixed;
-	right: 2rem;
-	bottom: 2rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 4.0625rem;
-	height: 4.0625rem;
-	border-radius: 50%;
-	background-color: #48c857;
-	color: #dddddd;
-	font-size: 2.2rem;
-	transition-duration: 0.2s;
-
-	&:hover {
-		transform: scale(1.1);
-	}
-}
-
 @media (max-width: 768px) {
 	.title {
 		font-size: 1.4rem;
@@ -147,11 +150,7 @@
 		}
 	}
 
-	.chat {
-		right: 1rem;
-		bottom: 1rem;
-		width: 3.4375rem;
-		height: 3.4375rem;
-		font-size: 1.8rem;
+	.whatsappGroup {
+		padding: 1.5rem;
 	}
 }
