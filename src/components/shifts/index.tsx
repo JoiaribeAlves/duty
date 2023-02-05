@@ -61,7 +61,7 @@ export function Shifts() {
 
 				<meta
 					name="description"
-					content={`Escala das farmácias que ficarão de plantão durante o mês de ${useMonth(
+					content={`Confira a escala das farmácias que ficarão de plantão durante o mês de ${useMonth(
 						new Date().getMonth() + 1
 					)}.`}
 				/>
