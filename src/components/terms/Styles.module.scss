@@ -12,21 +12,25 @@
 
 	h2 {
 		font-size: 1rem;
+	}
+
+	p + p {
 		margin: 1rem 0;
 	}
 
 	dl {
 		padding-left: 2rem;
-		margin: 0.5rem 0;
+		margin: 1rem 0;
 
 		dt {
-			margin-top: 0.5rem;
+			margin-top: 1rem;
 			font-weight: bold;
 		}
 	}
 
 	ul {
 		padding-left: 2rem;
+		margin: 1rem 0;
 	}
 
 	a {
