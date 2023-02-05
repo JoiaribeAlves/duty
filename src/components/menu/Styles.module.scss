@@ -1,3 +1,5 @@
+@import "../../styles/colors.scss";
+
 .nav {
 	position: fixed;
 	top: 0;
@@ -5,8 +7,8 @@
 	width: 20%;
 	height: 100vh;
 	padding-top: 4rem;
-	background-color: #1f1f1f;
-	border-right: 1px solid #333333;
+	background-color: $gray-800;
+	border-right: 1px solid $gray-700;
 	transition-duration: 0.2s;
 	transition-timing-function: ease-out;
 	z-index: 2;
@@ -20,13 +22,13 @@
 				align-items: center;
 				gap: 0.625rem;
 				padding: 1rem;
-				color: #dddddd;
+				color: $text;
 				text-decoration: none;
-				border-bottom: 1px solid #333333;
+				border-bottom: 1px solid $gray-700;
 				transition-duration: 0.2s;
 
 				&:hover {
-					background-color: #4daa57;
+					color: $green;
 				}
 			}
 		}
