@@ -13,7 +13,7 @@ import {
 import { getDuties, getPharmacyById } from "../../services/api";
 import { useMonth } from "../../hooks/useMonth";
 import { Layout } from "../Layout";
-import { ErrorLoadData, Spiner } from "../Utils";
+import { ErrorLoadData, Spinner } from "../Utils";
 import { IPharmacy } from "../../interfaces";
 
 import styles from "./Styles.module.scss";
@@ -22,7 +22,7 @@ export function Shifts() {
 	const [showModal, setShowModal] = useState(false);
 	const [pharmacyModal, setPharmacyModal] = useState<IPharmacy | null>(null);
 
-	const { data, isError, isLoading } = useQuery(
+	const { data, isError, isLoading, refetch } = useQuery(
 		["duties"],
 		() => getDuties(new Date().getMonth() + 1),
 		{
@@ -31,11 +31,19 @@ export function Shifts() {
 	);
 
 	if (isLoading) {
-		return <Spiner />;
+		return (
+			<Layout>
+				<Spinner />
+			</Layout>
+		);
 	}
 
 	if (isError) {
-		return <ErrorLoadData />;
+		return (
+			<Layout>
+				<ErrorLoadData fnRefresh={refetch} />
+			</Layout>
+		);
 	}
 
 	async function loadPharmacyData(id: string) {
