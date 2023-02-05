@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { MdRefresh } from "react-icons/md";
 
 export function Spinner() {
 	return (
@@ -8,13 +8,17 @@ export function Spinner() {
 	);
 }
 
-export function ErrorLoadData() {
+interface IErrorLoadData {
+	fnRefresh: () => unknown;
+}
+
+export function ErrorLoadData({ fnRefresh }: IErrorLoadData) {
 	return (
 		<div className="error-load">
 			<p>Ocorreu um erro ao carregar os dados.</p>
 
-			<button type="button" onClick={() => window.location.reload()}>
-				Tentar novamente
+			<button type="button" onClick={fnRefresh}>
+				<MdRefresh /> Tentar novamente
 			</button>
 		</div>
 	);
