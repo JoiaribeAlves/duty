@@ -1,3 +1,5 @@
+@import "../../styles/colors.scss";
+
 .content {
 	text-align: center;
 
@@ -5,7 +7,7 @@
 		font-size: 1.8rem;
 
 		svg {
-			color: #4daa57;
+			color: $green;
 		}
 	}
 
