@@ -1,3 +1,5 @@
+@import "../../styles/colors.scss";
+
 .title {
 	text-align: center;
 	font-size: 1.6rem;
@@ -16,7 +18,7 @@
 		gap: 1rem;
 		width: 100%;
 		padding: 1rem;
-		background-color: #1f1f1f;
+		background-color: $gray-800;
 		border-radius: 0.312rem;
 		text-align: center;
 
@@ -27,18 +29,18 @@
 
 		div {
 			font-size: 2rem;
-			color: #4daa57;
+			color: $green;
 		}
 	}
 }
 
 .address {
-	border-top: 1px solid #dddddd;
+	border-top: 1px solid $gray-100;
 	padding-top: 2rem;
 
 	h2 {
 		margin-bottom: 1rem;
-		color: #4daa57;
+		color: $green;
 	}
 
 	.phones {
@@ -55,11 +57,11 @@
 			display: inline-flex;
 			align-items: center;
 			gap: 0.312rem;
-			color: #ffffff;
+			color: $text;
 			text-decoration: none;
 
 			svg {
-				color: #0db124;
+				color: $green;
 			}
 		}
 	}
@@ -72,16 +74,16 @@
 		width: 100%;
 		height: 3.125rem;
 		margin-top: 2.5rem;
-		background-color: #1f1f1f;
-		color: #dddddd;
-		border: 1px solid #333333;
+		background-color: $gray-800;
+		color: $text;
+		border: 1px solid $gray-700;
 		border-radius: 0.312rem;
 		text-decoration: none;
 		font-size: 1.1rem;
 		transition-duration: 0.2s;
 
 		&:hover {
-			color: #319f4f;
+			color: $green;
 		}
 
 		svg {
@@ -96,7 +98,7 @@
 	gap: 2rem;
 	margin: 3rem 0;
 	padding: 2rem;
-	background-color: #1f1f1f;
+	background-color: $gray-800;
 	border-radius: 0.312rem;
 	text-align: center;
 
@@ -107,8 +109,8 @@
 		gap: 0.625rem;
 		height: 3rem;
 		padding: 0 1rem;
-		background-color: #0db124;
-		color: #ffffff;
+		background-color: $green;
+		color: $text;
 		border-radius: 999rem;
 		text-decoration: none;
 		transition-duration: 0.2s;
