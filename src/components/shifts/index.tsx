@@ -6,7 +6,7 @@ import {
 	FaCamera,
 	FaInfoCircle,
 	FaMapMarkerAlt,
-	FaPhone,
+	FaPhoneAlt,
 	FaTimes,
 } from "react-icons/fa";
 
@@ -117,11 +117,11 @@ export function Shifts() {
 								<p>
 									{pharmacyModal ? (
 										<>
-											<FaPhone />
+											<FaPhoneAlt />
 											{pharmacyModal.telephone}
 										</>
 									) : (
-										<FaPhone />
+										<FaPhoneAlt />
 									)}
 								</p>
 							</div>
