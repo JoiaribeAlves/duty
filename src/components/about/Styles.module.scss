@@ -1,3 +1,5 @@
+@import "../../styles/colors.scss";
+
 .about {
 	h2 {
 		margin-bottom: 2rem;
@@ -5,7 +7,7 @@
 
 	p {
 		a {
-			color: #dddddd;
+			color: $green;
 		}
 	}
 
@@ -36,16 +38,16 @@
 			width: 100%;
 			max-width: 368px;
 			height: 3.125rem;
-			background-color: #1f1f1f;
-			color: #dddddd;
-			border: 1px solid #333333;
+			background-color: $gray-800;
+			color: $text;
+			border: 1px solid $gray-700;
 			border-radius: 0.312rem;
 			font-size: 1.1rem;
 			transition-duration: 0.2s;
 			cursor: pointer;
 
 			&:hover {
-				color: #319f4f;
+				color: $green;
 			}
 		}
 	}
