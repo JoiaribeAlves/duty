@@ -6,7 +6,7 @@ import Helmet from "react-helmet";
 
 import { getDutyByDate } from "../../services/api";
 import { Layout } from "../Layout";
-import { ErrorLoadData, Spiner } from "../Utils";
+import { ErrorLoadData, Spinner } from "../Utils";
 
 import styles from "./Styles.module.scss";
 
@@ -54,7 +54,7 @@ export function Main(): JSX.Element {
 		return `${n[2]}${n[3]} ${n[4]}${n[5]}${n[6]}${n[7]}${n[8]}-${n[9]}${n[10]}${n[11]}${n[12]}`;
 	}
 
-	const { isLoading, error, data } = useQuery(
+	const { isLoading, error, data, refetch } = useQuery(
 		["duty"],
 		() => getDutyByDate(setDateAndTimeToLoadContent()),
 		{
@@ -63,11 +63,22 @@ export function Main(): JSX.Element {
 	);
 
 	if (isLoading) {
-		return <Spiner />;
+		return (
+			<Layout>
+				<Spinner />
+			</Layout>
+		);
 	}
 
 	if (error) {
-		return <ErrorLoadData />;
+		return (
+			<Layout>
+				<ErrorLoadData
+					// @ts-ignore
+					fnRefresh={refetch}
+				/>
+			</Layout>
+		);
 	}
 
 	return (
