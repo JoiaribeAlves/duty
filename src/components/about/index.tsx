@@ -43,7 +43,7 @@ export function About() {
 					</p>
 
 					<p>
-						De acordo com a referida Lei os estabelecimentos deverão cumprir a
+						De acordo com a referida lei os estabelecimentos deverão cumprir a
 						escala elaborada semestralmente pela{" "}
 						<a href="https://acijaru.com.br/" target="_blank">
 							<abbr title="Associação Comercial e Industrial de Jaru">
@@ -54,7 +54,7 @@ export function About() {
 					</p>
 
 					<p>
-						O objetivo da Lei, é garantir que a população conte com serviço de
+						O objetivo é garantir que a população conte com serviço de
 						assistência farmacêutica no período de 24 horas todos os dias.
 					</p>
 				</div>
