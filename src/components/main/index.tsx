@@ -161,8 +161,8 @@ export function Main(): JSX.Element {
 
 				<div className={styles.groups}>
 					<p>
-						Faça parte do nosso grupo no Whatsapp ou Telegram e saiba, em
-						primeira mão, qual farmácia está de plantão.
+						Faça parte do nosso grupo no Whatsapp ou do canal no Telegram e
+						saiba, em primeira mão, qual farmácia está de plantão.
 					</p>
 
 					<div className={styles.links}>
@@ -181,7 +181,7 @@ export function Main(): JSX.Element {
 							className={styles.telegramLink}
 						>
 							<FaTelegramPlane />
-							Entrar no grupo do Telegram
+							Entrar no canal do Telegram
 						</a>
 					</div>
 				</div>
