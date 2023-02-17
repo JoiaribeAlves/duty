@@ -92,7 +92,7 @@
 	}
 }
 
-.whatsappGroup {
+.groups {
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
@@ -100,23 +100,39 @@
 	padding: 2rem;
 	background-color: $gray-800;
 	border-radius: 0.312rem;
-	text-align: center;
 
-	a {
+	p {
+		text-align: center;
+	}
+
+	.links {
 		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 0.625rem;
-		height: 3rem;
-		padding: 0 1rem;
-		background-color: $green;
-		color: $text;
-		border-radius: 999rem;
-		text-decoration: none;
-		transition-duration: 0.2s;
+		gap: 1rem;
 
-		&:hover {
-			filter: brightness(0.9);
+		a {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 0.625rem;
+			width: 100%;
+			height: 3rem;
+			padding: 0 1rem;
+			color: $text;
+			border-radius: 999rem;
+			text-decoration: none;
+			transition-duration: 0.2s;
+
+			&:hover {
+				filter: brightness(0.9);
+			}
+
+			&.whatsappLink {
+				background-color: $green;
+			}
+
+			&.telegramLink {
+				background-color: $blue;
+			}
 		}
 	}
 }
@@ -154,5 +170,17 @@
 
 	.whatsappGroup {
 		padding: 1.5rem;
+	}
+
+	.groups {
+		padding: 1.5rem;
+
+		.links {
+			flex-direction: column;
+
+			a {
+				text-align: center;
+			}
+		}
 	}
 }

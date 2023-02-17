@@ -1,4 +1,9 @@
-import { FaMapMarkedAlt, FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
+import {
+	FaMapMarkedAlt,
+	FaWhatsapp,
+	FaPhoneAlt,
+	FaTelegramPlane,
+} from "react-icons/fa";
 import { useQuery } from "react-query";
 import { format } from "date-fns";
 import { ToastContainer, toast } from "react-toastify";
@@ -154,15 +159,31 @@ export function Main(): JSX.Element {
 					</a>
 				</div>
 
-				<div className={styles.whatsappGroup}>
+				<div className={styles.groups}>
 					<p>
-						Faça parte do nosso grupo no Whatsapp e saiba em primeira mão quem
-						está de plantão.
+						Faça parte do nosso grupo no Whatsapp ou Telegram e saiba, em
+						primeira mão, qual farmácia está de plantão.
 					</p>
-					<a href="https://chat.whatsapp.com/EhzdDGQ5TJNC83LVdUwMcl">
-						<FaWhatsapp />
-						Entrar no grupo
-					</a>
+
+					<div className={styles.links}>
+						<a
+							href="https://chat.whatsapp.com/EhzdDGQ5TJNC83LVdUwMcl"
+							target="_blank"
+							className={styles.whatsappLink}
+						>
+							<FaWhatsapp />
+							Entrar no grupo do Whatsapp
+						</a>
+
+						<a
+							href="https://t.me/plantao_de_farmacia_jaru"
+							target="_blank"
+							className={styles.telegramLink}
+						>
+							<FaTelegramPlane />
+							Entrar no grupo do Telegram
+						</a>
+					</div>
 				</div>
 			</Layout>
 		</>
