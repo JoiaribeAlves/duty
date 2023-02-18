@@ -53,10 +53,14 @@ export function Main(): JSX.Element {
 		}
 	}
 
-	function maskWhats(number: string) {
+	function maskPhoneNumber(number: string) {
 		const n = number.split("");
 
-		return `${n[2]}${n[3]} ${n[4]}${n[5]}${n[6]}${n[7]}${n[8]}-${n[9]}${n[10]}${n[11]}${n[12]}`;
+		if (n.length === 10) {
+			return `${n[0]}${n[1]} ${n[2]}${n[3]}${n[4]}${n[5]}-${n[6]}${n[7]}${n[8]}${n[9]}`;
+		} else {
+			return `${n[2]}${n[3]} ${n[4]}${n[5]}${n[6]}${n[7]}-${n[8]}${n[9]}${n[10]}${n[11]}`;
+		}
 	}
 
 	const { isLoading, error, data, refetch } = useQuery(
@@ -129,18 +133,28 @@ export function Main(): JSX.Element {
 
 					<h3>Telefone{data?.data.pharmacy.whatsapp ? "s" : ""}:</h3>
 					<div className={styles.phones}>
-						<p className={styles.tel}>
-							<FaPhoneAlt /> {`${data?.data.pharmacy.telephone}`}
-						</p>
-						{data?.data.pharmacy.whatsapp && (
+						<p>
 							<a
-								href={`https://api.whatsapp.com/send?phone=${data?.data.pharmacy.whatsapp}&text=Olá, estou precisando de atendimento`}
-								target="_blank"
-								className={styles.whats}
-								title="Charmar no Whatsapp"
+								href={`tel:+55${data?.data.pharmacy.telephone}`}
+								className={styles.tel}
+								title="Telefone Fixo"
 							>
-								<FaWhatsapp /> {maskWhats(data?.data.pharmacy.whatsapp)}
+								<FaPhoneAlt />
+								{maskPhoneNumber(data?.data.pharmacy.telephone || "")}
 							</a>
+						</p>
+
+						{data?.data.pharmacy.whatsapp && (
+							<p>
+								<a
+									href={`https://api.whatsapp.com/send?phone=${data?.data.pharmacy.whatsapp}&text=Olá, estou precisando de atendimento`}
+									target="_blank"
+									className={styles.whats}
+									title="Charmar no Whatsapp"
+								>
+									<FaWhatsapp /> {maskPhoneNumber(data?.data.pharmacy.whatsapp)}
+								</a>
+							</p>
 						)}
 					</div>
 
