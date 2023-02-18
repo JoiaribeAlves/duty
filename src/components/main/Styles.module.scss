@@ -46,22 +46,21 @@
 	.phones {
 		margin-bottom: 2rem;
 
-		.tel {
-			display: flex;
-			align-items: center;
-			gap: 0.312rem;
-			margin: 0.312rem 0;
-		}
-
-		.whats {
+		a {
 			display: inline-flex;
 			align-items: center;
 			gap: 0.312rem;
 			color: $text;
 			text-decoration: none;
 
-			svg {
-				color: $green;
+			&.tel {
+				margin-bottom: 0.625rem;
+			}
+
+			&.whats {
+				svg {
+					color: $green;
+				}
 			}
 		}
 	}
@@ -166,10 +165,6 @@
 				font-size: 1.5rem;
 			}
 		}
-	}
-
-	.whatsappGroup {
-		padding: 1.5rem;
 	}
 
 	.groups {
