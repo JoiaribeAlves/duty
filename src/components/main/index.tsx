@@ -11,7 +11,8 @@ import Helmet from "react-helmet";
 
 import { getDutyByDate } from "../../services/api";
 import { Layout } from "../Layout";
-import { ErrorLoadData, Spinner } from "../Utils";
+import { ErrorLoadData } from "../Utils";
+import { HomePage } from "../skeleton/HomePage";
 
 import styles from "./Styles.module.scss";
 
@@ -74,7 +75,7 @@ export function Main(): JSX.Element {
 	if (isLoading) {
 		return (
 			<Layout>
-				<Spinner />
+				<HomePage />
 			</Layout>
 		);
 	}
