@@ -3,7 +3,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 import styles from "./Styles.module.scss";
 
-export function HomePage() {
+export function SkeletonHomePage() {
 	return (
 		<SkeletonTheme baseColor="#222222" highlightColor="#444">
 			<div className={styles.title}>

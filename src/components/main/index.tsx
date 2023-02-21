@@ -12,7 +12,7 @@ import Helmet from "react-helmet";
 import { getDutyByDate } from "../../services/api";
 import { Layout } from "../Layout";
 import { ErrorLoadData } from "../Utils";
-import { HomePage } from "../skeleton/HomePage";
+import { SkeletonHomePage } from "../skeleton/HomePage";
 
 import styles from "./Styles.module.scss";
 
@@ -75,7 +75,7 @@ export function Main(): JSX.Element {
 	if (isLoading) {
 		return (
 			<Layout>
-				<HomePage />
+				<SkeletonHomePage />
 			</Layout>
 		);
 	}
