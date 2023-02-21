@@ -1,0 +1,19 @@
+.title {
+	width: 70%;
+	margin: 0 auto;
+
+	@media (max-width: 768px) {
+		width: 90%;
+	}
+}
+
+.cards {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 1rem;
+	margin: 2rem 0;
+
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr 1fr;
+	}
+}
