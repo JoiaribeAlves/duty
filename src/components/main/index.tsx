@@ -94,11 +94,11 @@ export function Main(): JSX.Element {
 	return (
 		<>
 			<Helmet>
-				<title>Início | Plantão de Farmácia</title>
+				<title>Farmácia de Plantão Hoje em Jaru | Plantão de Farmácia</title>
 
 				<meta
 					name="description"
-					content="Veja qual farmácia está de plantão no município de Jaru-RO."
+					content="Clique aqui e veja qual farmácia está de plantão hoje no município de Jaru."
 				/>
 			</Helmet>
 
