@@ -58,13 +58,13 @@ export function Shifts() {
 	return (
 		<>
 			<Helmet>
-				<title>Escala | Plantão de Farmácia</title>
+				<title>Escala de Plantões | Plantão de Farmácia</title>
 
 				<meta
 					name="description"
 					content={`Confira a escala das farmácias que ficarão de plantão durante o mês de ${useMonth(
 						new Date().getMonth() + 1
-					)}.`}
+					)} em Jaru.`}
 				/>
 			</Helmet>
 
