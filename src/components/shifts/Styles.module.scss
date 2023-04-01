@@ -70,8 +70,7 @@
 		width: 100%;
 		height: 22rem;
 		margin-top: 0;
-		background-color: $gray-800;
-		border: 1px solid $gray-700;
+		background-color: $gray-100;
 		border-radius: 0.312rem;
 		animation: modal 0.3s ease 1 forwards;
 		opacity: 0;
@@ -93,7 +92,7 @@
 			height: 10rem;
 
 			h3 {
-				color: $green;
+				color: $primary;
 			}
 
 			p {
@@ -102,7 +101,7 @@
 				gap: 0.312rem;
 
 				svg {
-					color: $green;
+					color: $primary;
 				}
 			}
 		}
@@ -116,15 +115,15 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			background-color: $gray-800;
-			color: $text;
-			border: 1px solid $gray-700;
+			background-color: $primary;
+			color: $light;
+			border: none;
 			border-radius: 50%;
 			transition-duration: 0.2s;
 			cursor: pointer;
 
 			&:hover {
-				color: $green;
+			background-color: $primary-hover;
 			}
 		}
 	}
