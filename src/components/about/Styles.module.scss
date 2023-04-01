@@ -7,7 +7,7 @@
 
 	p {
 		a {
-			color: $green;
+			color: $text;
 		}
 	}
 
@@ -38,16 +38,16 @@
 			width: 100%;
 			max-width: 368px;
 			height: 3.125rem;
-			background-color: $gray-800;
-			color: $text;
-			border: 1px solid $gray-700;
+			background-color: $primary;
+			color: $light;
+			border: none;
 			border-radius: 0.312rem;
 			font-size: 1.1rem;
 			transition-duration: 0.2s;
 			cursor: pointer;
 
 			&:hover {
-				color: $green;
+				background-color: $primary-hover;
 			}
 		}
 	}

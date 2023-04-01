@@ -103,7 +103,7 @@ export function Main(): JSX.Element {
 			</Helmet>
 
 			<Layout>
-				<ToastContainer theme="dark" />
+				<ToastContainer theme="light" />
 
 				<h1 className={styles.title}>
 					Farmácia de plantão em {data?.data.pharmacy.address.city}

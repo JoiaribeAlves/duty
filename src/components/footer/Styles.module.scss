@@ -1,3 +1,5 @@
+@import "../../styles/colors.scss";
+
 .footer {
 	display: flex;
 	justify-content: center;
@@ -9,12 +11,12 @@
 	p {
 		span {
 			svg {
-				color: #dc143c;
+				color: $primary;
 			}
 		}
 
 		a {
-			color: #dddddd;
+			color: $text;
 			text-decoration: none;
 
 			&:hover {

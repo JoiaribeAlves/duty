@@ -5,7 +5,7 @@ import styles from "./Styles.module.scss";
 
 export function SkeletonHomePage() {
 	return (
-		<SkeletonTheme baseColor="#222222" highlightColor="#444">
+		<SkeletonTheme baseColor="#dddddd" highlightColor="#eeeeee">
 			<div className={styles.title}>
 				<h1>
 					<Skeleton />
