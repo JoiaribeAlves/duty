@@ -5,7 +5,7 @@ import {
 	FaTelegramPlane,
 } from "react-icons/fa";
 import { useQuery } from "react-query";
-import { format } from "date-fns";
+import { IKImage } from "imagekitio-react";
 import { ToastContainer, toast } from "react-toastify";
 import Helmet from "react-helmet";
 
@@ -25,7 +25,9 @@ function getBrowserInfo(): void {
 		);
 	}
 }
-getBrowserInfo();
+// getBrowserInfo();
+
+const urlEndpoint = "https://ik.imagekit.io/f0dpc3cob";
 
 export function Main(): JSX.Element {
 	function addZeroIfNecessary(number: number): string {
@@ -109,24 +111,13 @@ export function Main(): JSX.Element {
 					Farmácia de plantão em {data?.data.pharmacy.address.city}
 				</h1>
 
-				<div className={styles.timer}>
-					<div className={styles.start}>
-						<p>Início</p>
-						<div>
-							<p>
-								{format(new Date(data!.data.duty.startDate), "dd - MM - yy")}
-							</p>
-							<p>{format(new Date(data!.data.duty.startDate), "HH") + "h"}</p>
-						</div>
-					</div>
-
-					<div className={styles.end}>
-						<p>Término</p>
-						<div>
-							<p>{format(new Date(data!.data.duty.endDate), "dd - MM - yy")}</p>
-							<p>{format(new Date(data!.data.duty.endDate), "HH") + "h"}</p>
-						</div>
-					</div>
+				<div className={styles.image}>
+					{/* @ts-ignore */}
+					<IKImage
+						urlEndpoint={urlEndpoint}
+						src={data?.data.pharmacy.imageUrl}
+						alt={data?.data.pharmacy.name}
+					/>
 				</div>
 
 				<div className={styles.address}>
