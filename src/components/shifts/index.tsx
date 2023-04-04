@@ -6,7 +6,6 @@ import {
 	FaCamera,
 	FaInfoCircle,
 	FaMapMarkerAlt,
-	FaPhoneAlt,
 	FaTimes,
 } from "react-icons/fa";
 
@@ -95,12 +94,9 @@ export function Shifts() {
 				{showModal && (
 					<div className={styles.modalContainer}>
 						<div className={styles.modal}>
-							<div
-								className={styles.image}
-								style={{
-									backgroundImage: `url("${pharmacyModal?.imageUrl}")`,
-								}}
-							></div>
+							<div className={styles.image}>
+								<img src={pharmacyModal?.imageUrl} alt={pharmacyModal?.name} />
+							</div>
 
 							<div className={styles.info}>
 								<h3>{pharmacyModal?.name ?? ""}</h3>
@@ -113,16 +109,6 @@ export function Shifts() {
 										</>
 									) : (
 										<FaMapMarkerAlt />
-									)}
-								</p>
-								<p>
-									{pharmacyModal ? (
-										<>
-											<FaPhoneAlt />
-											{pharmacyModal.telephone}
-										</>
-									) : (
-										<FaPhoneAlt />
 									)}
 								</p>
 							</div>
