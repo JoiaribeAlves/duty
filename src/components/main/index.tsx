@@ -167,18 +167,18 @@ export function Main(): JSX.Element {
 
 				<div className={styles.groups}>
 					<p>
-						Faça parte do nosso grupo no Whatsapp ou do canal no Telegram e
+						Faça parte do nosso canal no Whatsapp ou do canal no Telegram e
 						saiba, em primeira mão, qual farmácia está de plantão.
 					</p>
 
 					<div className={styles.links}>
 						<a
-							href="https://chat.whatsapp.com/EhzdDGQ5TJNC83LVdUwMcl"
+							href="https://whatsapp.com/channel/0029VaAwdLfJP21Dsv3q123o"
 							target="_blank"
 							className={styles.whatsappLink}
 						>
 							<FaWhatsapp />
-							Entrar no grupo do Whatsapp
+							Entrar no canal do Whatsapp
 						</a>
 
 						<a
